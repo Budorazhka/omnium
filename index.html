@@ -85,6 +85,344 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Анимированные градиенты на фоне */
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #6366f1, #8b5cf6, #ec4899, #06b6d4);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+        
+        /* Плавающие частицы */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translateY(-30px) translateX(20px) rotate(120deg);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translateY(30px) translateX(-20px) rotate(240deg);
+                opacity: 0.4;
+            }
+        }
+        
+        .floating-particle {
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        /* Пульсирующие круги */
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        /* Вращающиеся элементы */
+        @keyframes rotate-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .rotate-slow {
+            animation: rotate-slow 30s linear infinite;
+        }
+        
+        /* Мерцание */
+        @keyframes shimmer {
+            0% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+        
+        .shimmer {
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        /* Волновой эффект */
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+            }
+        }
+        
+        .wave {
+            animation: wave 6s ease-in-out infinite;
+        }
+        
+        /* Сетка на фоне */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Плавные переходы для карточек */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        /* Свечение при наведении */
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-on-hover:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        /* Timeline layout */
+        .om-timeline{
+            position:relative;
+            display:grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 14px;
+            align-items:start;
+        }
+
+        .om-track{
+            position:absolute;
+            left: 3%;
+            right: 3%;
+            top: 34px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(99,102,241,0.35), rgba(148,163,184,0.18));
+            border: 1px solid rgba(148,163,184,0.18);
+            box-shadow: 0 0 24px rgba(99,102,241,0.12);
+        }
+
+        .om-step{
+            position:relative;
+            min-height: 260px;
+            animation: om-in 0.8s ease-out both;
+            animation-delay: calc(var(--i) * 70ms);
+        }
+
+        @keyframes om-in{
+            from{opacity:0; transform: translateY(14px);}
+            to{opacity:1; transform: translateY(0);}
+        }
+
+        .om-node{
+            position:relative;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 12px auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius: 999px;
+            background: rgba(2,6,23,0.8);
+            border: 1px solid rgba(148,163,184,0.22);
+            box-shadow: 0 0 28px rgba(99,102,241,0.14);
+        }
+
+        .om-node--final{
+            border-color: rgba(99,102,241,0.55);
+            box-shadow: 0 0 34px rgba(99,102,241,0.24);
+        }
+
+        .om-icon{
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: rgba(99,102,241,0.14);
+            border: 1px solid rgba(99,102,241,0.25);
+            color: rgba(226,232,240,0.92);
+            font-size: 18px;
+        }
+
+        .om-ring{
+            position:absolute;
+            inset: -8px;
+            border-radius: 999px;
+            border: 1px dashed rgba(99,102,241,0.35);
+            opacity: 0.7;
+            animation: om-rot 18s linear infinite;
+            pointer-events:none;
+        }
+
+        @keyframes om-rot{
+            from{transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+        }
+
+        .om-card{
+            background: rgba(15,23,42,0.55);
+            border: 1px solid rgba(148,163,184,0.18);
+            border-radius: 16px;
+            padding: 14px 14px 12px 14px;
+            backdrop-filter: blur(10px);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+            min-height: 170px;
+        }
+
+        .om-card:hover{
+            transform: translateY(-6px);
+            border-color: rgba(99,102,241,0.45);
+            box-shadow: 0 0 26px rgba(99,102,241,0.18);
+        }
+
+        .om-top{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .om-badge{
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            color: rgba(226,232,240,0.92);
+            background: rgba(99,102,241,0.16);
+            border: 1px solid rgba(99,102,241,0.22);
+            white-space: nowrap;
+        }
+
+        .om-badge--opt{
+            background: rgba(34,211,238,0.14);
+            border-color: rgba(34,211,238,0.22);
+        }
+
+        .om-meta{
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: rgba(148,163,184,0.72);
+            white-space: nowrap;
+        }
+
+        .om-title{
+            color: rgba(255,255,255,0.92);
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .om-text{
+            color: rgba(148,163,184,0.86);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .om-arrow{
+            position:absolute;
+            top: 30px;
+            right: -7px;
+            width: 14px;
+            height: 14px;
+            border-top: 2px solid rgba(99,102,241,0.55);
+            border-right: 2px solid rgba(99,102,241,0.55);
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 10px rgba(99,102,241,0.18));
+        }
+        .om-step:last-child .om-arrow{ display:none; }
+
+        /* Responsive: stack */
+        @media (max-width: 1024px){
+            .om-timeline{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .om-track{ display:none; }
+            .om-step{ min-height: unset; }
+            .om-node{ margin: 0 0 10px 0; }
+            .om-step{ display:flex; gap: 12px; align-items:flex-start; }
+            .om-card{ width:100%; }
+        }
+
+        @media (max-width: 520px){
+            .om-timeline{ grid-template-columns: 1fr; }
+        }
+
+        /* Стили для карточек тарифов */
+        .om-card-js.is-expanded .om-card-full-details {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .om-card-js.is-expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .radio-group input[type="radio"]:checked + .radio-label {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            .radio-group {
+                flex-direction: column;
+            }
+            .radio-group label {
+                min-width: 100%;
+            }
+        }
+
+        /* Анимация орбитального вращения */
+        .orbit-item {
+            left: 0;
+            top: 0;
+            transform-origin: 0 0;
+            animation: orbit-rotate var(--orbit-duration, 40s) linear infinite;
+        }
+
+        @keyframes orbit-rotate {
+            from {
+                transform: rotate(var(--orbit-angle, 0deg)) translateX(var(--orbit-radius, 160px)) rotate(calc(-1 * var(--orbit-angle, 0deg)));
+            }
+            to {
+                transform: rotate(calc(var(--orbit-angle, 0deg) + 360deg)) translateX(var(--orbit-radius, 160px)) rotate(calc(-1 * var(--orbit-angle, 0deg) - 360deg));
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
@@ -95,7 +433,7 @@
                 <div class="flex items-center gap-2 md:gap-3">
                     <a href="#hero" class="flex items-center gap-2 md:gap-3">
                         <img src="img/logo.png" alt="Omnium" class="h-10 md:h-16 w-auto">
-                        <div class="text-base md:text-xl font-mono font-bold tracking-tighter text-white">OMNIUM</div>
+                        <div class="text-lg md:text-2xl font-mono font-bold tracking-widest text-white">OMNIUM</div>
                     </a>
                 </div>
                 <button id="menuToggle" class="relative w-10 h-10 flex items-center justify-center focus:outline-none z-50 group" aria-label="Меню">
@@ -122,42 +460,195 @@
     </nav>
 
     <section id="hero" class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-[0.15]"></div>
+        <!-- Дополнительные градиенты -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px]"></div>
         <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full opacity-20 pointer-events-none">
-            <div class="absolute top-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-            <div class="absolute top-40 right-10 w-48 h-48 md:w-72 md:h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+            <div class="absolute top-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl pulse-glow"></div>
+            <div class="absolute top-40 right-10 w-48 h-48 md:w-72 md:h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl pulse-glow" style="animation-delay: 2s"></div>
+            <div class="absolute bottom-20 left-1/4 w-32 h-32 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-2xl floating-particle"></div>
+            <div class="absolute top-1/2 right-1/4 w-40 h-40 bg-cyan-500/30 rounded-full mix-blend-multiply filter blur-2xl floating-particle" style="animation-delay: 1s"></div>
         </div>
+        <!-- Графические элементы на фоне -->
+        <svg class="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgba(99,102,241,0.15);stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:rgba(99,102,241,0.08);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(99,102,241,0.15);stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(99,102,241,0.12);stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:rgba(99,102,241,0.06);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(99,102,241,0.12);stop-opacity:1" />
+                </linearGradient>
+                <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(99,102,241,0.04)" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <!-- Сетка -->
+            <rect width="100%" height="100%" fill="url(#gridPattern)" />
+            <!-- Горизонтальные линии акцента -->
+            <line x1="0" y1="200" x2="1200" y2="200" stroke="url(#lineGrad1)" stroke-width="0.5" />
+            <line x1="0" y1="400" x2="1200" y2="400" stroke="url(#lineGrad1)" stroke-width="0.5" />
+            <line x1="0" y1="600" x2="1200" y2="600" stroke="url(#lineGrad1)" stroke-width="0.5" />
+            <!-- Вертикальные линии акцента -->
+            <line x1="300" y1="0" x2="300" y2="800" stroke="url(#lineGrad2)" stroke-width="0.5" />
+            <line x1="600" y1="0" x2="600" y2="800" stroke="url(#lineGrad2)" stroke-width="0.5" />
+            <line x1="900" y1="0" x2="900" y2="800" stroke="url(#lineGrad2)" stroke-width="0.5" />
+            <!-- Геометрические акценты -->
+            <circle cx="250" cy="300" r="120" fill="none" stroke="rgba(99,102,241,0.04)" stroke-width="1" />
+            <circle cx="950" cy="500" r="100" fill="none" stroke="rgba(99,102,241,0.04)" stroke-width="1" />
+        </svg>
 
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 fade-up">
-            <div class="inline-flex gap-1.5 md:gap-2 mb-4 md:mb-6 justify-center flex-wrap">
-                <span class="px-2.5 md:px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-mono text-slate-400">
-                    <i class="fa-solid fa-robot mr-1.5 md:mr-2"></i>AI анализ
-                </span>
-                <span class="px-2.5 md:px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-mono text-slate-400">
-                    <i class="fa-solid fa-list-check mr-1.5 md:mr-2"></i>Методология
-                </span>
-                <span class="px-2.5 md:px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-mono text-slate-400">
-                    <i class="fa-solid fa-user-tie mr-1.5 md:mr-2"></i>Эксперты
-                </span>
-            </div>
-            
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 md:mb-6 leading-tight px-2">
-                Системное управление <br class="hidden md:block" /> малым бизнесом
+        <div class="max-w-6xl mx-auto px-4 relative z-10 fade-up">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <!-- Левая колонка: Текст -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-mono font-bold tracking-tight text-white mb-4 md:mb-6 leading-tight">
+                        Omnium: <span class="text-accent">Системное управление</span> <br class="hidden md:block" /> малым бизнесом
             </h1>
             
-            <p class="text-base md:text-lg lg:text-xl text-slate-400 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
-                Фиксируем текущее состояние бизнеса, формируем стратегию на 12 месяцев и помогаем принимать правильные решения. Стратегия из реальности вашего бизнеса.
-            </p>
+                    <p class="text-lg md:text-xl lg:text-2xl text-slate-300 mb-8 md:mb-10 leading-relaxed font-medium">
+                        Превращаем хаос операционки в управляемую стратегию на 12 месяцев.
+                    </p>
 
-            <div class="flex justify-center gap-4 px-4">
-                <a href="#tariffs" class="bg-accent hover:bg-indigo-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition shadow-[0_0_20px_rgba(99,102,241,0.3)] w-full sm:w-auto text-center">
-                    Выбрать формат
-                </a>
+                    <!-- 3 ключевых буллета -->
+                    <div class="space-y-4 md:space-y-5 mb-8 md:mb-10">
+                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center group-hover:bg-accent/30 transition">
+                                <i class="fa-solid fa-rocket text-accent text-xl"></i>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="font-bold text-white mb-1 text-base md:text-lg">Внедрение</div>
+                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Строим управление на основе реальности вашего бизнеса.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition">
+                                <i class="fa-solid fa-brain text-blue-400 text-xl"></i>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="font-bold text-white mb-1 text-base md:text-lg">Точность через AI</div>
+                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Используем искусственный интеллект для анализа данных, чтобы исключить домыслы и найти скрытые точки роста.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition">
+                                <i class="fa-solid fa-chart-line text-green-400 text-xl"></i>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="font-bold text-white mb-1 text-base md:text-lg">Результат — система</div>
+                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Вы получаете настроенный управленческий ритм, понятные цели и финансовую прозрачность.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center lg:justify-start gap-4">
+                        <a href="#tariffs" class="bg-accent hover:bg-indigo-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 text-center relative overflow-hidden group">
+                            <span class="relative z-10">Выбрать формат</span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Вращающиеся направления вокруг центра -->
+                <div class="relative hidden lg:block">
+                    <div class="relative w-full aspect-square max-w-lg mx-auto">
+                        <!-- Центральная иконка - знак доллара -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-accent/40 to-green-500/40 rounded-full flex items-center justify-center border-2 border-accent/60 shadow-[0_0_60px_rgba(99,102,241,0.5)] relative z-20">
+                                <i class="fa-solid fa-dollar-sign text-white text-4xl md:text-5xl font-bold"></i>
+                            </div>
+                        </div>
+
+                        <!-- Вращающаяся орбита с 9 направлениями -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="relative w-full h-full" style="transform: translate(50%, 50%);">
+                                <!-- Орбитальная линия (опционально) -->
+                                <svg class="absolute" style="left: -200px; top: -200px; width: 400px; height: 400px;" viewBox="0 0 400 400">
+                                    <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(99,102,241,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
+                                </svg>
+
+                                <!-- 1. Владелец (роль и управление) - 0° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 0deg; --orbit-duration: 40s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-accent/50 to-accent/30 rounded-full flex items-center justify-center border-2 border-accent shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:shadow-[0_0_40px_rgba(99,102,241,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-user-tie text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Клиенты и конкуренты - 40° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 40deg; --orbit-duration: 38s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500/50 to-blue-400/30 rounded-full flex items-center justify-center border-2 border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_40px_rgba(59,130,246,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-users text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Продукт - 80° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 80deg; --orbit-duration: 42s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500/50 to-purple-400/30 rounded-full flex items-center justify-center border-2 border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-box text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Привлечение клиентов (маркетинг) - 120° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 120deg; --orbit-duration: 36s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500/50 to-cyan-400/30 rounded-full flex items-center justify-center border-2 border-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-bullhorn text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 5. Продажи - 160° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 160deg; --orbit-duration: 39s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-green-500/50 to-green-400/30 rounded-full flex items-center justify-center border-2 border-green-400 shadow-[0_0_30px_rgba(74,222,128,0.5)] hover:shadow-[0_0_40px_rgba(74,222,128,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-handshake text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 6. Команда - 200° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 200deg; --orbit-duration: 41s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/50 to-yellow-400/30 rounded-full flex items-center justify-center border-2 border-yellow-400 shadow-[0_0_30px_rgba(250,204,21,0.5)] hover:shadow-[0_0_40px_rgba(250,204,21,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-people-group text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 7. Управление (процессы, ответственность, ритм) - 240° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 240deg; --orbit-duration: 37s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500/50 to-orange-400/30 rounded-full flex items-center justify-center border-2 border-orange-400 shadow-[0_0_30px_rgba(251,146,60,0.5)] hover:shadow-[0_0_40px_rgba(251,146,60,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-gears text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 8. Финансы - 280° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 280deg; --orbit-duration: 43s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-red-500/50 to-red-400/30 rounded-full flex items-center justify-center border-2 border-red-400 shadow-[0_0_30px_rgba(248,113,113,0.5)] hover:shadow-[0_0_40px_rgba(248,113,113,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-wallet text-white text-xl"></i>
+                                    </div>
+                                </div>
+
+                                <!-- 9. Стратегия (как сейчас выбираются приоритеты и планируются изменения) - 320° -->
+                                <div class="orbit-item absolute" style="--orbit-radius: 180px; --orbit-angle: 320deg; --orbit-duration: 35s;">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500/50 to-pink-400/30 rounded-full flex items-center justify-center border-2 border-pink-400 shadow-[0_0_30px_rgba(244,114,182,0.5)] hover:shadow-[0_0_40px_rgba(244,114,182,0.7)] transition-all duration-300 group cursor-pointer">
+                                        <i class="fa-solid fa-chess-knight text-white text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="problems" class="py-16 md:py-20 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 grid-pattern opacity-10"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-red-500/5 rounded-full blur-3xl pulse-glow pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-red-500/3 rounded-full blur-3xl floating-particle" style="animation-delay: 1.5s"></div>
+        <div class="absolute top-1/2 left-1/3 w-60 h-60 bg-orange-500/5 rounded-full blur-2xl wave"></div>
         <div class="max-w-5xl mx-auto px-4 fade-up relative z-10">
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 mb-8 md:mb-12">
                 <div class="w-10 h-10 md:w-12 md:h-12 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -169,10 +660,11 @@
             </div>
             
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <div class="p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
+                <div class="p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group card-hover">
                     <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10"><i class="fa-solid fa-fire-extinguisher"></i></div>
-                    <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Тушение пожаров</h3>
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10 group-hover:scale-110 transition duration-300"><i class="fa-solid fa-fire-extinguisher"></i></div>
+                    <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Операционная рутина</h3>
                     <p class="text-xs md:text-sm text-slate-400 relative z-10">Постоянные операционные вопросы съедают все время.</p>
                 </div>
                 <div class="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
@@ -199,6 +691,9 @@
 
     <section id="for-whom" class="py-16 md:py-20 bg-slate-950 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent opacity-50"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl floating-particle"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl floating-particle" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl wave"></div>
         <div class="max-w-6xl mx-auto px-4 fade-up relative z-10">
             <div class="text-center mb-12 md:mb-16">
                 <div class="inline-flex items-center justify-center gap-2 mb-4">
@@ -213,11 +708,12 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <div class="bg-slate-900/50 p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group">
-                    <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-4 md:mb-6 group-hover:bg-accent transition">
+                <div class="bg-slate-900/50 p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group card-hover glow-on-hover relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-4 md:mb-6 group-hover:bg-accent transition relative z-10">
                         <i class="fa-solid fa-user text-base md:text-lg"></i>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-mono">Один Владелец</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-mono relative z-10">Один Владелец</h3>
                     <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4">
                         Бизнес с одним центром принятия решений.
                     </p>
@@ -262,7 +758,9 @@
     </section>
 
     <section id="product" class="py-16 md:py-20 max-w-5xl mx-auto px-4 relative">
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-accent/5 rounded-full blur-3xl pulse-glow pointer-events-none"></div>
+        <div class="absolute right-0 top-1/4 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl floating-particle"></div>
+        <div class="absolute left-1/4 bottom-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl wave"></div>
         <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center fade-up relative z-10">
             <div class="md:w-1/2 w-full">
                 <div class="inline-flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
@@ -307,8 +805,10 @@
 
     <section id="artifacts" class="py-16 md:py-24 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 opacity-50"></div>
-        <div class="absolute top-20 right-20 w-64 h-64 md:w-96 md:h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-20 left-20 w-64 h-64 md:w-96 md:h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 grid-pattern opacity-10"></div>
+        <div class="absolute top-20 right-20 w-64 h-64 md:w-96 md:h-96 bg-accent/5 rounded-full blur-3xl pulse-glow pointer-events-none"></div>
+        <div class="absolute bottom-20 left-20 w-64 h-64 md:w-96 md:h-96 bg-blue-500/5 rounded-full blur-3xl pulse-glow pointer-events-none" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/3 rounded-full blur-3xl floating-particle"></div>
         
         <div class="max-w-7xl mx-auto px-4 relative z-10 fade-up">
             <div class="text-center mb-12 md:mb-16">
@@ -333,47 +833,75 @@
                         <div class="md:w-5/12 mb-6 md:mb-8 lg:mb-0">
                             <div class="inline-flex items-center gap-2 px-2.5 md:px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-accent text-xs font-mono mb-3 md:mb-4">
                                 <i class="fa-solid fa-file-medical-alt"></i> Инструмент №1
-                        </div>
+                    </div>
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">1. Заключение по бизнесу (9 направлений)</h3>
                             <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
                                 Фундаментальный документ. Мы раскладываем бизнес на 9 этапов и показываем, какая из них не работает. <br><br>
-                                Вы увидите свои ограничения роста и проблемные зоны, которые раньше были в «слепой зоне».
+                                Вы увидите свои ограничения роста и проблемные зоны, которые раньше были скрыты из-за отсутствия планирования.
                             </p>
                             <div class="text-white font-mono text-xs md:text-sm border-l-2 border-accent pl-3 md:pl-4 py-1">
                                 «Единый документ о вашей компании»
                     </div>
                 </div>
 
-                        <div class="md:w-7/12 bg-slate-950/50 rounded-lg md:rounded-xl border border-slate-800/50 p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
-                            <div class="p-2 md:p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-1.5 md:gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-user text-slate-500 text-xs"></i> <span class="truncate">Владелец</span>
-                            </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-users text-slate-500"></i> Клиенты
-                            </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-box-open text-slate-500"></i> Продукт
-                            </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-bullhorn text-slate-500"></i> Маркетинг
-                            </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-slate-500"></i> Продажи
-                            </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-people-group text-slate-500"></i> Команда
-                    </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-gears text-slate-500"></i> Управление
-                    </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-chart-pie text-slate-500"></i> Финансы
-                    </div>
-                            <div class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-2 text-xs text-slate-300">
-                                <i class="fa-solid fa-chess-knight text-slate-500"></i> Стратегия
+                        <div class="md:w-7/12 bg-slate-950/50 rounded-lg md:rounded-xl border border-slate-800/50 p-4 md:p-6 overflow-hidden">
+                            <div class="flex flex-col gap-3 md:gap-4">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="text-xs font-mono text-slate-400">Схема №5 - Радар бизнеса - Владелец (роль)</div>
+                                    <div class="flex items-center gap-2">
+                                        <button
+                                            type="button"
+                                            class="px-3 py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
+                                            data-radar-tab="before"
+                                        >До</button>
+                                        <button
+                                            type="button"
+                                            class="px-3 py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
+                                            data-radar-tab="after"
+                                        >После</button>
+                        </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+                                    <!-- До -->
+                                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-3 md:p-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="text-xs font-mono text-slate-400">До</div>
+                                            <div class="flex items-center gap-2 text-[11px] font-mono text-slate-500">
+                                                <span class="inline-flex items-center gap-1">
+                                                    <span class="w-2.5 h-2.5 rounded-sm" style="background: rgba(99,102,241,0.55)"></span>
+                                                    факт
+                                                </span>
+                                                <span class="inline-flex items-center gap-1">
+                                                    <span class="w-2.5 h-2.5 rounded-sm" style="background: rgba(34,211,238,0.35)"></span>
+                                                    контур
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div id="radar-before" class="w-full"></div>
+                                        <div class="mt-2 text-[11px] font-mono text-slate-500 leading-relaxed">
+                                            Слабые зоны подсвечены автоматически - дальше выравниваем ритм, владельца, команду и деньги.
                     </div>
                 </div>
+
+                                    <!-- После -->
+                                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-3 md:p-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="text-xs font-mono text-slate-400">После</div>
+                                            <div class="text-[11px] font-mono text-slate-500">целевая картина</div>
+                    </div>
+                                        <div id="radar-after" class="w-full"></div>
+                                        <div class="mt-2 text-[11px] font-mono text-slate-500 leading-relaxed">
+                                            Форма становится ровной - владельцу легче держать курс, команда держит ритм, цифры не плавают.
+                    </div>
+                    </div>
+                    </div>
+
+                                <div class="hidden" data-radar-only="before"></div>
+                                <div class="hidden" data-radar-only="after"></div>
+                </div>
             </div>
+        </div>
         </div>
 
                 <div class="lg:col-span-6 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-slate-600 transition duration-300 flex flex-col relative overflow-hidden group">
@@ -403,7 +931,7 @@
                         «Мы не продаем товары, мы становимся платформой №1 в регионе...»
                     </div>
                     <p class="text-xs text-slate-500 mt-4">Документ синхронизирует собственников и топов.</p>
-                </div>
+                    </div>
 
                 <div class="lg:col-span-5 bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-accent transition duration-300 relative overflow-hidden group">
                     <div class="absolute right-0 top-0 p-2 md:p-4 opacity-5 group-hover:opacity-10 transition"><i class="fa-solid fa-bullseye text-6xl md:text-9xl"></i></div>
@@ -437,7 +965,7 @@
                         <div class="inline-flex items-center gap-2 mb-3 md:mb-4">
                             <div class="w-8 h-8 md:w-10 md:h-10 bg-accent/20 rounded-lg flex items-center justify-center">
                                 <i class="fa-solid fa-chess text-accent text-sm md:text-base"></i>
-                            </div>
+                    </div>
                             <div class="inline-block bg-accent text-white text-xs font-bold px-2 py-1 rounded">Главный документ</div>
                         </div>
                         <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">5. Стратегия (План действий)</h3>
@@ -468,23 +996,156 @@
             </div>
 
             </div>
-                    </div>
+        </div>
     </section>
 
     <section id="technology" class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-        <div class="absolute top-0 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 grid-pattern opacity-15"></div>
+        <div class="absolute top-0 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-3xl pulse-glow pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pulse-glow pointer-events-none" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/3 right-1/3 w-80 h-80 bg-purple-500/8 rounded-full blur-3xl floating-particle" style="animation-delay: 1s"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-72 h-72 bg-cyan-500/8 rounded-full blur-3xl wave"></div>
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-12 md:mb-20 fade-up">
                 <div class="inline-flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-accent/20 rounded-xl md:rounded-2xl flex items-center justify-center">
                         <i class="fa-solid fa-diagram-project text-accent text-xl md:text-2xl"></i>
-                    </div>
+                </div>
                 </div>
                 <h2 class="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-white mb-3 md:mb-4 px-2">Технологический путь Omnium</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto text-base md:text-lg px-4">
                     Мы берем хаос, пропускаем через методологию и возвращаем структуру. Вот как это происходит шаг за шагом.
                 </p>
+            </div>
+
+            <!-- Scheme 6: Timeline (Omnium UI style) -->
+            <div class="mb-16 md:mb-20 fade-up">
+                <div class="text-center mb-10 md:mb-14">
+                    <div class="inline-flex items-center justify-center gap-2 mb-3">
+                        <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-route text-accent text-xl"></i>
+                    </div>
+                    </div>
+                    <div class="text-accent font-mono text-xs tracking-widest uppercase mb-2">Процесс работы</div>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-white px-2">Процесс работы (Timeline)</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-3 px-4">
+                        Пять блоков - от старта и сбора реальности до выдачи инструментов и опционального трекинга.
+                    </p>
+                </div>
+
+                <div class="om-timeline">
+                    <!-- Track -->
+                    <div class="om-track" aria-hidden="true"></div>
+
+                    <!-- Step 0 -->
+                    <div class="om-step" style="--i:0">
+                        <div class="om-node">
+                            <div class="om-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+                            <div class="om-ring"></div>
+                        </div>
+                        <div class="hidden lg:block om-arrow" aria-hidden="true"></div>
+
+                        <div class="om-card">
+                            <div class="om-top">
+                                <div class="om-badge">Блок 0</div>
+                                <div class="om-meta">Старт</div>
+                    </div>
+                            <div class="om-title">NDA, чат, правила</div>
+                            <div class="om-text">
+                                Подписываем NDA, создаем общий чат, фиксируем формат взаимодействия.
+                    </div>
+                </div>
+            </div>
+
+                    <!-- Step 1 -->
+                    <div class="om-step" style="--i:1">
+                        <div class="om-node">
+                            <div class="om-icon">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+                            <div class="om-ring"></div>
+                    </div>
+                        <div class="hidden lg:block om-arrow" aria-hidden="true"></div>
+
+                        <div class="om-card">
+                            <div class="om-top">
+                                <div class="om-badge">Блок 1</div>
+                                <div class="om-meta">Сбор данных</div>
+                            </div>
+                            <div class="om-title">Интервью + цифровые следы</div>
+                            <div class="om-text">
+                                Интервью: владелец, команда, клиенты. Параллельно - выгрузки CRM, отчеты, документы.
+                            </div>
+                </div>
+            </div>
+
+                    <!-- Step 2 -->
+                    <div class="om-step" style="--i:2">
+                        <div class="om-node">
+                            <div class="om-icon">
+                                <i class="fa-solid fa-microchip"></i>
+                    </div>
+                            <div class="om-ring"></div>
+                    </div>
+                        <div class="hidden lg:block om-arrow" aria-hidden="true"></div>
+
+                        <div class="om-card">
+                            <div class="om-top">
+                                <div class="om-badge">Блок 2</div>
+                                <div class="om-meta">Обработка</div>
+                </div>
+                            <div class="om-title">"Черный ящик" (AI)</div>
+                            <div class="om-text">
+                                AI-транскрибация - структурирование - поиск несостыковок - подготовка выводов эксперта.
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="om-step" style="--i:3">
+                        <div class="om-node">
+                            <div class="om-icon">
+                                <i class="fa-solid fa-file-signature"></i>
+                </div>
+                            <div class="om-ring"></div>
+                </div>
+                        <div class="hidden lg:block om-arrow" aria-hidden="true"></div>
+
+                        <div class="om-card">
+                            <div class="om-top">
+                                <div class="om-badge">Блок 3</div>
+                                <div class="om-meta">Результат</div>
+                </div>
+                            <div class="om-title">Артефакты</div>
+                            <div class="om-text">
+                                Заключение, SWOT, Видение, Стратегия - набор управленческих документов.
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="om-step" style="--i:4">
+                        <div class="om-node om-node--final">
+                            <div class="om-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="om-ring"></div>
+                        </div>
+
+                        <div class="om-card">
+                            <div class="om-top">
+                                <div class="om-badge om-badge--opt">Блок 4</div>
+                                <div class="om-meta">Опция</div>
+                            </div>
+                            <div class="om-title">Трекинг внедрения</div>
+                            <div class="om-text">
+                                Еженедельные сессии, контроль ритма, помощь в доведении решений до изменений.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="relative">
@@ -494,7 +1155,7 @@
                     <div class="order-1 md:w-5/12 mb-4 md:mb-0"></div>
                     <div class="z-20 flex items-center order-1 bg-slate-950 border-4 border-slate-800 shadow-[0_0_15px_rgba(99,102,241,0.5)] w-8 h-8 rounded-full md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2 group-hover:scale-125 transition duration-300 mb-4 md:mb-0">
                         <div class="w-2 h-2 bg-accent rounded-full mx-auto"></div>
-                    </div>
+                </div>
                     <div class="order-2 md:order-1 md:w-5/12 w-full px-4 md:px-6 py-5 md:py-6 bg-slate-900/80 border border-slate-700 rounded-xl hover:border-accent transition duration-300 relative">
                         <div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 text-4xl md:text-6xl font-black text-slate-800/30 font-mono select-none">00</div>
                         <h3 class="mb-3 font-bold text-white text-lg md:text-xl flex items-center">
@@ -504,7 +1165,7 @@
                             Вам не нужно готовить отчеты или подбивать цифры. Мы просто подписываем NDA (соглашение о конфиденциальности), создаем чат и назначаем график. Безопасность данных — фундамент, на котором строится вся честность дальнейшей работы.
                         </p>
                     </div>
-                </div>
+            </div>
 
                 <div class="mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-between w-full fade-up group">
                     <div class="order-2 md:order-1 md:w-5/12 w-full px-4 md:px-6 py-5 md:py-6 bg-slate-900/80 border border-slate-700 rounded-xl hover:border-accent transition duration-300 relative md:text-right">
@@ -515,10 +1176,10 @@
                         <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
                             Мы проводим глубинные интервью с вами, ключевыми сотрудниками и <strong>клиентами</strong>. Параллельно забираем «цифровой след»: выгрузки из CRM, финансовые таблицы, структуру чатов. Мы загружаем в систему всё: от стратегии в голове владельца до реальных отзывов покупателей.
                         </p>
-                    </div>
+                </div>
                     <div class="z-20 flex items-center order-1 bg-slate-950 border-4 border-slate-800 w-8 h-8 rounded-full md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2 group-hover:border-accent transition duration-300 mb-4 md:mb-0">
                          <div class="w-2 h-2 bg-slate-500 rounded-full mx-auto group-hover:bg-accent transition"></div>
-                    </div>
+        </div>
                     <div class="order-3 md:order-1 md:w-5/12"></div>
             </div>
 
@@ -526,7 +1187,7 @@
                     <div class="order-1 md:w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-slate-950 border-4 border-slate-800 w-8 h-8 rounded-full md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2 group-hover:border-accent transition duration-300 mb-4 md:mb-0">
                          <div class="w-2 h-2 bg-slate-500 rounded-full mx-auto group-hover:bg-accent transition"></div>
-                    </div>
+                </div>
                     <div class="order-2 md:order-1 md:w-5/12 w-full px-4 md:px-6 py-5 md:py-6 bg-slate-900/80 border border-slate-700 rounded-xl hover:border-accent transition duration-300 relative">
                         <div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 text-4xl md:text-6xl font-black text-slate-800/30 font-mono select-none">02</div>
                         <h3 class="mb-3 font-bold text-white text-lg md:text-xl flex items-center">
@@ -536,8 +1197,8 @@
                          Нейросеть Omnium переводит часы разговоров в текст, структурирует гигабайты данных и ищет несостыковки. <br>
                             <span class="text-accent/80 italic">«Владелец думает, что продают так, а клиенты говорят, что покупают иначе»</span> — Алгоритмы подсвечивают эти разрывы. Мы отделяем факты от галлюцинаций.
                         </p>
+                </div>
             </div>
-        </div>
 
                 <div class="mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-between w-full fade-up group">
                     <div class="order-2 md:order-1 md:w-5/12 w-full px-4 md:px-6 py-5 md:py-6 bg-slate-900/80 border border-slate-700 rounded-xl hover:border-accent transition duration-300 relative md:text-right">
@@ -548,13 +1209,13 @@
                         <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
                             Методолог собирает из разрозненных фактов единую картину по 9 направлениям (Продукт, Финансы, Команда и др.). Мы находим корневые проблемы, которые тормозят систему. Здесь хаос превращается в понятную схему с красными и зелеными зонами.
                         </p>
-            </div>
+                </div>
                     <div class="z-20 flex items-center order-1 bg-slate-950 border-4 border-slate-800 w-8 h-8 rounded-full md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2 group-hover:border-accent transition duration-300 mb-4 md:mb-0">
                          <div class="w-2 h-2 bg-slate-500 rounded-full mx-auto group-hover:bg-accent transition"></div>
-        </div>
+            </div>
                     <div class="order-3 md:order-1 md:w-5/12"></div>
-                </div>
-
+        </div>
+        
                  <div class="flex flex-col md:flex-row items-center justify-between w-full fade-up group mb-8 md:mb-0">
                     <div class="order-1 md:w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-white border-4 border-slate-800 shadow-[0_0_20px_rgba(255,255,255,0.4)] w-8 h-8 rounded-full md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2 mb-4 md:mb-0">
@@ -575,77 +1236,252 @@
         </div>
     </section>
 
-    <section id="tariffs" class="py-16 md:py-20 max-w-6xl mx-auto px-4 fade-up">
-        <h2 class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 md:mb-12 text-center px-2">Стоимость и варианты</h2>
-        
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            
-            <div class="bg-slate-900 p-5 md:p-6 rounded-xl border border-slate-700 flex flex-col hover:scale-105 hover:border-accent hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 cursor-pointer group">
-                <div class="mb-4">
-                    <span class="text-xs font-mono text-accent bg-slate-800 px-2 py-1 rounded">Вход</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white mt-2">Паспорт владельца 360°</h3>
+    <section id="tariffs" class="py-16 md:py-20 bg-slate-950 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-white mb-3 md:mb-4 text-center px-2 fade-up">Форматы участия в Omnium</h2>
+            <p class="text-slate-400 text-center mb-10 md:mb-14 text-sm md:text-base max-w-2xl mx-auto fade-up">Выберите точку входа и постройте системный бизнес</p>
+
+            <!-- ЭТАП 1 -->
+            <div class="mb-12 md:mb-16 fade-up">
+                <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
+                    <div class="w-1 h-6 md:h-8 bg-accent rounded"></div>
+                    <h3 class="text-xl md:text-2xl font-mono font-bold text-white">ЭТАП 1. Тест-драйв и диагностика</h3>
                 </div>
-                <p class="text-xs md:text-sm text-slate-400 flex-grow mb-4 md:mb-6">Управленческий разбор роли владельца, карта ограничений и рычагов роста.</p>
-                <div class="text-xl md:text-2xl font-mono font-bold text-white mb-4 md:mb-6">14 990 ₽</div>
-                <button onclick="openTariffModal('Паспорт владельца 360°', '14990')" class="w-full py-2 text-sm md:text-base border border-slate-600 text-white rounded hover:bg-slate-800 hover:border-accent transition group-hover:shadow-lg">Выбрать</button>
+                <div class="om-card-js js-card bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-700">
+                    <div class="p-5 md:p-6 border-b border-slate-800">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2">Паспорт владельца 360°</h4>
+                        <p class="text-slate-400 text-sm">Персональный управленческий разбор для быстрого старта.</p>
+                </div>
+                    <div class="p-5 md:p-6">
+                        <div class="text-2xl md:text-3xl font-mono font-bold text-white">14 990 ₽</div>
+                    </div>
+                    <div class="om-card-full-details hidden">
+                        <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800 space-y-6">
+                            <div>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Поймите, как ваш стиль управления реально влияет на деньги и рост компании. Найдите главные "тормоза" бизнеса, скрытые в ваших привычках.</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Для кого:</h5>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed">Для собственника, который чувствует перегруз, хаос и хочет понять, что именно в его действиях мешает бизнесу расти.</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Что внутри:</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Глубокое интервью с экспертом Omnium (онлайн, под запись).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Анализ вашей модели принятия решений через AI.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Выявление «слепых зон» и повторяющихся сбоев.</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Результат (Артефакты):</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Профиль управленческой роли:</strong> Документ с картой ваших ограничений и рычагов роста.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Личная стратегия изменений:</strong> Что конкретно менять в подходе и ритме.</span></li>
+                                </ul>
+                            </div>
+                            <button onclick="openTariffModal('Паспорт владельца 360°', '14990')" class="w-full bg-accent hover:bg-indigo-500 text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-sm md:text-base">Записаться на разбор за 14 990 ₽</button>
+                        </div>
+                    </div>
+                    <button class="om-card-toggle w-full py-3 md:py-4 border-t border-slate-800 text-accent hover:bg-slate-800/50 transition flex items-center justify-center gap-2 font-semibold text-sm md:text-base">
+                        <span class="btn-text">Подробнее о тарифе</span>
+                        <svg class="toggle-icon transition-transform duration-300" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="currentColor"/></svg>
+                    </button>
+                </div>
             </div>
 
-             <div class="bg-slate-800 p-5 md:p-6 rounded-xl border-2 border-accent flex flex-col relative hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all duration-300 cursor-pointer group">
-                <div class="absolute top-0 right-0 bg-accent text-white text-xs px-2 md:px-3 py-1 rounded-bl font-bold">Base</div>
-                <div class="mb-4">
-                    <span class="text-xs font-mono text-slate-300 bg-slate-700 px-2 py-1 rounded">Основной</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white mt-2">Владелец</h3>
+            <!-- ЭТАП 2 -->
+            <div class="mb-12 md:mb-16 fade-up">
+                <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
+                    <div class="w-1 h-6 md:h-8 bg-accent rounded"></div>
+                    <h3 class="text-xl md:text-2xl font-mono font-bold text-white">ЭТАП 2. Построение стратегии и системы (Omnium Core)</h3>
                 </div>
-                <p class="text-xs md:text-sm text-slate-300 flex-grow mb-4 md:mb-6">Для бизнеса с одним центром принятия решений. Полная стратегия.</p>
-                <div class="text-xl md:text-2xl font-mono font-bold text-white mb-4 md:mb-6">189 000 ₽</div>
-                <button onclick="openTariffModal('Владелец', '189000')" class="w-full py-2 text-sm md:text-base bg-accent text-white rounded hover:bg-indigo-500 transition shadow-lg group-hover:shadow-xl">Выбрать</button>
+                <div class="om-card-js js-card bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-700" id="core-calculator-card">
+                    <div class="p-5 md:p-6 border-b border-slate-800">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2">Стратегия на 12 месяцев</h4>
+                        <p class="text-slate-400 text-sm">Сборка полной управленческой картины бизнеса и плана действий.</p>
+                    </div>
+                    <div class="p-5 md:p-6">
+                        <div class="bg-slate-950/50 border border-slate-800 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
+                            <strong class="text-white text-sm md:text-base block mb-4">Выберите конфигурацию участия:</strong>
+                            <div class="radio-group flex flex-wrap gap-3 mb-4">
+                                <input type="radio" id="type-owner" name="config-type" value="owner" checked class="hidden">
+                                <label for="type-owner" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Я один (Владелец)</label>
+                                <input type="radio" id="type-team" name="config-type" value="team" class="hidden">
+                                <label for="type-team" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Владелец + Команда</label>
+                                <input type="radio" id="type-partners" name="config-type" value="partners" class="hidden">
+                                <label for="type-partners" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Совладельцы (+ Команда)</label>
+                            </div>
+
+                            <div class="js-partner-counter hidden mb-4 p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <span class="text-slate-300 text-sm">Количество дополнительных партнёров:</span>
+                                <div class="flex items-center gap-4">
+                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="partners">-</button>
+                                    <span class="counter-value text-lg font-bold text-white min-w-[20px] text-center" id="cnt-partners-val">0</span>
+                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="partners">+</button>
+                                </div>
+                                <small class="text-slate-500 text-xs">(макс. 3, по 89к)</small>
+                            </div>
+
+                            <div class="js-team-counter hidden p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <span class="text-slate-300 text-sm">Количество ключевых сотрудников:</span>
+                                <div class="flex items-center gap-4">
+                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="team">-</button>
+                                    <span class="counter-value text-lg font-bold text-white min-w-[20px] text-center" id="cnt-team-val">0</span>
+                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="team">+</button>
+                                </div>
+                                <small class="text-slate-500 text-xs">(макс. 5, по 39к)</small>
+                            </div>
+                        </div>
+                        
+                        <div class="text-2xl md:text-3xl font-mono font-bold text-white mb-2" id="core-total-price">189 000 ₽</div>
+                        <div class="text-sm text-slate-400" id="core-price-breakdown">Базовый тариф</div>
+                    </div>
+                    <div class="om-card-full-details hidden">
+                        <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800 space-y-6">
+                            <div>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Мы соберем реальность вашего бизнеса, структурируем её в модель по 9 направлениям и превратим в понятную стратегию достижения целей.</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Что мы сделаем в любом формате:</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Сбор данных: Интервью с владельцем/совладельцами.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Сбор данных: Интервью с клиентами (обязательно).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Анализ цифровых следов бизнеса (CRM, отчеты).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Обработка и структурирование данных через AI.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Формирование выводов по 9 направлениям бизнеса.</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3" id="dynamic-who-heading">Для кого этот формат:</h5>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed" id="dynamic-who-text">...</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Главный результат (Пакет документов):</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Заключение по бизнесу (9 направлений):</strong> Сильные стороны, провалы, приоритеты.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>SWOT-анализ бизнеса:</strong> Структурированная оценка положения.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Видение компании (3–5 лет):</strong> Куда мы идем и какой компанией становимся.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Цели на 12 месяцев:</strong> Конечные желаемые состояния (факты).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Стратегия достижения целей:</strong> Ключевые решения, фокус и от чего отказываемся.</span></li>
+                                </ul>
+                            </div>
+                            <button id="core-buy-btn" onclick="openTariffModal('Стратегия на 12 месяцев', '189000')" class="w-full bg-accent hover:bg-indigo-500 text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-sm md:text-base">Выбрать этот формат</button>
+                        </div>
+                    </div>
+                    <button class="om-card-toggle w-full py-3 md:py-4 border-t border-slate-800 text-accent hover:bg-slate-800/50 transition flex items-center justify-center gap-2 font-semibold text-sm md:text-base">
+                        <span class="btn-text">Подробнее о составе работ</span>
+                        <svg class="toggle-icon transition-transform duration-300" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="currentColor"/></svg>
+                    </button>
+                </div>
             </div>
 
-            <div class="bg-slate-900 p-5 md:p-6 rounded-xl border border-slate-700 flex flex-col hover:scale-105 hover:border-accent hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 cursor-pointer group">
-                <div class="mb-4">
-                    <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded">Масштаб</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white mt-2">Совладельцы</h3>
+            <!-- Спецпродукт -->
+            <div class="mb-12 md:mb-16 fade-up">
+                <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
+                    <div class="w-1 h-6 md:h-8 bg-amber-500 rounded"></div>
+                    <h3 class="text-xl md:text-2xl font-mono font-bold text-white">Спецпродукт (Опционально)</h3>
                 </div>
-                <p class="text-xs md:text-sm text-slate-400 flex-grow mb-4 md:mb-6">Синхронизация видения и стратегии собственников.</p>
-                <div class="text-xl md:text-2xl font-mono font-bold text-white mb-1">189 000 ₽</div>
-                <div class="text-xs text-slate-500 mb-4 md:mb-6">+89к за партнера</div>
-                <button onclick="openTariffModal('Совладельцы', '189000')" class="w-full py-2 text-sm md:text-base border border-slate-600 text-white rounded hover:bg-slate-800 hover:border-accent transition group-hover:shadow-lg">Выбрать</button>
+                <div class="om-card-js js-card bg-slate-900/80 backdrop-blur-sm border border-amber-500/30 rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-500/50">
+                    <div class="p-5 md:p-6 border-b border-slate-800 bg-amber-950/20">
+                        <h4 class="text-xl md:text-2xl font-bold text-amber-400 mb-2">Партнёрская сессия</h4>
+                        <p class="text-slate-400 text-sm">Превращаем устные договоренности совладельцев в твердую систему.</p>
+                    </div>
+                    <div class="p-5 md:p-6">
+                        <div class="text-2xl md:text-3xl font-mono font-bold text-amber-400">89 000 ₽</div>
+                    </div>
+                    <div class="om-card-full-details hidden">
+                        <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800 space-y-6">
+                            <div>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Если есть напряжение между партнерами, разные ожидания или бизнес буксует из-за "лебедя, рака и щуки". Мы переводим отношения в понятный протокол и договор.</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Какие боли решает:</h5>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed">«Каждый тянет в свою сторону», скрытые конфликты, непроговоренные обиды по вкладу и деньгам, страх обсуждать сложные вопросы (выход, доли).</p>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Что делаем:</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Серия Zoom-сессий с совладельцами по методологии.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Разбор блоков: Цели, Вклад, Роли, Деньги, Конфликты, Выход.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Снятие разночтений и фиксация жестких правил.</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-white mb-3">Результат (Артефакты):</h5>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Протокол решений:</strong> Зафиксированные договоренности по всем спорным зонам.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Партнёрский договор:</strong> Понятный, прикладной юридический документ на базе протокола.</span></li>
+                                </ul>
+                            </div>
+                            <button onclick="openTariffModal('Партнерская сессия', '89000')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-300 text-sm md:text-base">Выбрать партнёрскую сессию</button>
+                        </div>
+                    </div>
+                    <button class="om-card-toggle w-full py-3 md:py-4 border-t border-slate-800 text-amber-400 hover:bg-slate-800/50 transition flex items-center justify-center gap-2 font-semibold text-sm md:text-base">
+                        <span class="btn-text">Подробнее о сессии</span>
+                        <svg class="toggle-icon transition-transform duration-300" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="currentColor"/></svg>
+                    </button>
+                </div>
             </div>
 
-            <div class="bg-slate-900 p-5 md:p-6 rounded-xl border border-slate-700 flex flex-col hover:scale-105 hover:border-accent hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 cursor-pointer group">
-                <div class="mb-4">
-                    <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded">Спецпродукт</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white mt-2">Партнерская сессия</h3>
+            <!-- ЭТАП 3 -->
+            <div class="fade-up">
+                <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
+                    <div class="w-1 h-6 md:h-8 bg-accent rounded"></div>
+                    <h3 class="text-xl md:text-2xl font-mono font-bold text-white">ЭТАП 3. Сопровождение и внедрение (Трекинг)</h3>
                 </div>
-                <p class="text-xs md:text-sm text-slate-400 flex-grow mb-4 md:mb-6">Договоренности и партнерский договор для совладельцев.</p>
-                <div class="text-xl md:text-2xl font-mono font-bold text-white mb-4 md:mb-6">89 000 ₽</div>
-                <button onclick="openTariffModal('Партнерская сессия', '89000')" class="w-full py-2 text-sm md:text-base border border-slate-600 text-white rounded hover:bg-slate-800 hover:border-accent transition group-hover:shadow-lg">Выбрать</button>
-            </div>
-        </div>
-        
-        <div class="mt-6 md:mt-8 text-center px-4">
-            <label class="inline-flex items-center cursor-pointer flex-wrap justify-center gap-2">
-                <input type="checkbox" value="" class="sr-only peer">
-                <div class="relative w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
-                <span class="ms-0 md:ms-3 text-xs md:text-sm font-medium text-slate-300 text-center">Подключение команды (+39 000 ₽ за сотрудника)</span>
-            </label>
-        </div>
-    </section>
+                <p class="text-slate-400 mb-6 md:mb-8 text-sm md:text-base leading-relaxed">Стратегия не работает без внедрения. Мы становимся вашим управленческим партнёром, чтобы довести планы до результата в деньгах.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="om-card-js js-card bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-700">
+                        <div class="p-5 md:p-6 border-b border-slate-800">
+                            <h4 class="text-xl md:text-2xl font-bold text-white mb-2">Ритм «Контроль курса»</h4>
+                            <p class="text-slate-400 text-sm">Ежемесячное сопровождение.</p>
+                        </div>
+                        <div class="p-5 md:p-6">
+                            <div class="text-2xl md:text-3xl font-mono font-bold text-white">69 000 ₽ <span class="text-sm font-normal text-slate-500">/ месяц</span></div>
+                        </div>
+                        <div class="om-card-full-details hidden">
+                            <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800">
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>1 стратегическая сессия в месяц (онлайн).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Сверка план/факт по целям.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Анализ отклонений и блокеров с помощью AI.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Корректировка стратегии и приоритетов на следующий месяц.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="om-card-toggle w-full py-3 md:py-4 border-t border-slate-800 text-accent hover:bg-slate-800/50 transition flex items-center justify-center gap-2 font-semibold text-sm md:text-base">
+                            <span class="btn-text">Подробнее</span>
+                            <svg class="toggle-icon transition-transform duration-300" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
 
-    <section class="py-20 bg-slate-900 border-y border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 text-center fade-up">
-            <h2 class="text-3xl font-mono font-bold text-white mb-6">Внедрение и трекинг (Опционально)</h2>
-            <p class="text-slate-400 mb-10 max-w-2xl mx-auto">
-                Помощь в доведении решений до изменений. Специалист Omnium + AI работают как «нейро-партнер»: удерживают фокус на целях, фиксируют отклонения и корректируют курс.
-            </p>
-            <div class="flex justify-center gap-6 flex-wrap">
-                <div class="bg-slate-950 px-8 py-6 rounded-lg border border-slate-700">
-                    <div class="text-sm text-slate-500 mb-1">Ежемесячный ритм</div>
-                    <div class="text-2xl font-mono font-bold text-white">69 000 ₽ <span class="text-sm font-normal text-slate-500">/ мес</span></div>
-                </div>
-                <div class="bg-slate-950 px-8 py-6 rounded-lg border border-slate-700">
-                    <div class="text-sm text-slate-500 mb-1">Еженедельный ритм</div>
-                    <div class="text-2xl font-mono font-bold text-white">199 000 ₽ <span class="text-sm font-normal text-slate-500">/ мес</span></div>
+                    <div class="om-card-js js-card bg-slate-900/80 backdrop-blur-sm border-2 border-accent rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/80 relative">
+                        <div class="absolute top-4 right-4 bg-accent text-white text-xs px-2 py-1 rounded font-bold">Рекомендуем для старта</div>
+                        <div class="p-5 md:p-6 border-b border-slate-800 bg-accent/10">
+                            <h4 class="text-xl md:text-2xl font-bold text-accent mb-2">Ритм «Активное внедрение»</h4>
+                            <p class="text-slate-400 text-sm">Еженедельное сопровождение.</p>
+                        </div>
+                        <div class="p-5 md:p-6">
+                            <div class="text-2xl md:text-3xl font-mono font-bold text-accent">199 000 ₽ <span class="text-sm font-normal text-slate-500">/ месяц</span></div>
+                        </div>
+                        <div class="om-card-full-details hidden">
+                            <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800 space-y-4">
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed">Высокая интенсивность. Для ситуаций, когда нужны быстрые изменения, оперативная корректировка решений и плотный контроль исполнения задач командой.</p>
+                                <ul class="space-y-2 text-slate-300 text-sm md:text-base">
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>4 управленческие сессии в месяц (еженедельно).</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Оперативный перевод решений в задачи с ответственными.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Быстрый съем блокеров и "тупняков" команды.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Еженедельная корректировка курса по факту реальности.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Работа в режиме "нейро-партнёра" (специалист + AI).</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="om-card-toggle w-full py-3 md:py-4 border-t border-slate-800 text-accent hover:bg-slate-800/50 transition flex items-center justify-center gap-2 font-semibold text-sm md:text-base">
+                            <span class="btn-text">Подробнее</span>
+                            <svg class="toggle-icon transition-transform duration-300" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -667,8 +1503,11 @@
     </section>
 
     <section id="contact" class="py-16 md:py-24 relative overflow-hidden bg-slate-950 border-t border-slate-900">
-        <div class="absolute -left-20 top-20 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute right-0 bottom-0 w-64 h-64 md:w-96 md:h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute inset-0 grid-pattern opacity-10"></div>
+        <div class="absolute -left-20 top-20 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-[100px] pulse-glow pointer-events-none"></div>
+        <div class="absolute right-0 bottom-0 w-64 h-64 md:w-96 md:h-96 bg-blue-600/10 rounded-full blur-[100px] pulse-glow pointer-events-none" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/2 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl floating-particle"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl wave"></div>
 
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 lg:flex gap-8 md:gap-12 items-center fade-up">
@@ -735,9 +1574,10 @@
                             <textarea id="message" rows="3" placeholder="Хочу выйти из операционки..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-accent hover:bg-indigo-500 text-white font-bold py-3 md:py-4 rounded-lg transition shadow-[0_0_20px_rgba(99,102,241,0.3)] flex items-center justify-center gap-2 group text-sm md:text-base">
-                            Отправить заявку
-                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        <button type="submit" class="w-full bg-accent hover:bg-indigo-500 text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 flex items-center justify-center gap-2 group text-sm md:text-base relative overflow-hidden">
+                            <span class="relative z-10">Отправить заявку</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition relative z-10"></i>
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </button>
 
                         <p class="text-xs text-slate-600 text-center mt-4">
@@ -754,7 +1594,7 @@
         <div class="max-w-6xl mx-auto px-4 text-center">
             <div class="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
                 <img src="img/logo.png" alt="Omnium" class="h-12 md:h-16 w-auto">
-                <div class="text-xl md:text-2xl font-mono font-bold tracking-tighter text-white">OMNIUM</div>
+                <div class="text-2xl md:text-3xl font-mono font-bold tracking-widest text-white">OMNIUM</div>
             </div>
             <p class="text-slate-500 text-xs md:text-sm mb-4 md:mb-6">Системное управление малым бизнесом.</p>
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-slate-400">
@@ -807,6 +1647,147 @@
             document.querySelectorAll('.fade-up').forEach((el) => {
                 observer.observe(el);
             });
+
+            // Инициализация радаров
+            mountRadars();
+            mountRadarTabs();
+
+            // Логика раскрытия карточек тарифов
+            document.querySelectorAll('.om-card-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.om-card-js');
+                    const btnText = this.querySelector('.btn-text');
+                    card.classList.toggle('is-expanded');
+                    
+                    if (card.classList.contains('is-expanded')) {
+                        btnText.textContent = 'Скрыть подробности';
+                    } else {
+                        const originalTexts = {
+                            'core-calculator-card': 'Подробнее о составе работ',
+                            'default': 'Подробнее'
+                        };
+                        const cardId = card.id || 'default';
+                        btnText.textContent = originalTexts[cardId] || originalTexts['default'];
+                        if (this.classList.contains('text-amber-400')) {
+                            btnText.textContent = 'Подробнее о сессии';
+                        }
+                    }
+                });
+            });
+
+            // Логика Калькулятора (Блок 2)
+            const BASE_PRICE = 189000;
+            const PARTNER_PRICE = 89000;
+            const TEAM_PRICE = 39000;
+            const MAX_PARTNERS = 3;
+            const MAX_TEAM = 5;
+
+            let tariffState = {
+                type: 'owner',
+                partnersCount: 0,
+                teamCount: 0
+            };
+
+            const radioButtons = document.querySelectorAll('input[name="config-type"]');
+            const partnerCounterBlock = document.querySelector('.js-partner-counter');
+            const teamCounterBlock = document.querySelector('.js-team-counter');
+            
+            const partnerValSpan = document.getElementById('cnt-partners-val');
+            const teamValSpan = document.getElementById('cnt-team-val');
+            
+            const totalPriceSpan = document.getElementById('core-total-price');
+            const priceBreakdownSpan = document.getElementById('core-price-breakdown');
+            const dynamicWhoText = document.getElementById('dynamic-who-text');
+            const coreBuyBtn = document.getElementById('core-buy-btn');
+
+            function updateTariffUI() {
+                partnerCounterBlock.classList.toggle('hidden', tariffState.type !== 'partners');
+                teamCounterBlock.classList.toggle('hidden', tariffState.type !== 'team' && tariffState.type !== 'partners');
+
+                if (tariffState.type === 'owner') { 
+                    tariffState.partnersCount = 0; 
+                    tariffState.teamCount = 0; 
+                }
+                if (tariffState.type === 'team') { 
+                    tariffState.partnersCount = 0; 
+                }
+
+                if (partnerValSpan) partnerValSpan.textContent = tariffState.partnersCount;
+                if (teamValSpan) teamValSpan.textContent = tariffState.teamCount;
+
+                let total = BASE_PRICE + (tariffState.partnersCount * PARTNER_PRICE) + (tariffState.teamCount * TEAM_PRICE);
+                
+                if (totalPriceSpan) totalPriceSpan.textContent = total.toLocaleString('ru-RU') + ' ₽';
+
+                let breakdown = 'Базовый тариф';
+                let whoText = '';
+                let btnText = '';
+
+                switch(tariffState.type) {
+                    case 'owner':
+                        breakdown = 'Тариф «Владелец»';
+                        whoText = 'Для бизнеса с одним центром принятия решений. Вы хотите быстро собрать реальность, зафиксировать курс и внедрять изменения через свою управленческую роль.';
+                        btnText = 'Выбрать тариф «Владелец»';
+                        break;
+                    case 'team':
+                        if (tariffState.teamCount > 0) {
+                             breakdown = `База (189к) + ${tariffState.teamCount} сотр. (по 39к)`;
+                        } else {
+                             breakdown = 'Тариф «Владелец + Команда» (выберите сотрудников)';
+                        }
+                        whoText = 'Если важно подключить ключевых сотрудников. Чтобы команда дала факты по своим направлениям, приняла логику изменений и отвечала за реализацию.';
+                        btnText = 'Выбрать тариф с командой';
+                        break;
+                    case 'partners':
+                         let parts = ['База (189к)'];
+                         if (tariffState.partnersCount > 0) parts.push(`${tariffState.partnersCount} партн. (по 89к)`);
+                         if (tariffState.teamCount > 0) parts.push(`${tariffState.teamCount} сотр. (по 39к)`);
+                         
+                         if (tariffState.partnersCount === 0 && tariffState.teamCount === 0) {
+                            breakdown = 'Тариф «Совладельцы» (добавьте участников)';
+                         } else {
+                            breakdown = parts.join(' + ');
+                         }
+                        whoText = 'Когда важно синхронизировать собственников как центр решений и (опционально) подключить ключевых людей как исполнителей.';
+                        btnText = 'Выбрать тариф для совладельцев';
+                        break;
+                }
+                if (priceBreakdownSpan) priceBreakdownSpan.textContent = breakdown;
+                if (dynamicWhoText) dynamicWhoText.textContent = whoText;
+                if (coreBuyBtn) {
+                    coreBuyBtn.textContent = btnText + ` за ${total.toLocaleString('ru-RU')} ₽`;
+                    coreBuyBtn.setAttribute('onclick', `openTariffModal('${tariffState.type === 'owner' ? 'Владелец' : tariffState.type === 'team' ? 'Владелец + Команда' : 'Совладельцы'}', '${total}')`);
+                }
+            }
+
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    tariffState.type = e.target.value;
+                    updateTariffUI();
+                });
+            });
+
+            document.querySelectorAll('.js-cnt-inc').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.dataset.target;
+                    if (target === 'partners' && tariffState.partnersCount < MAX_PARTNERS) tariffState.partnersCount++;
+                    if (target === 'team' && tariffState.teamCount < MAX_TEAM) tariffState.teamCount++;
+                    updateTariffUI();
+                });
+            });
+
+            document.querySelectorAll('.js-cnt-dec').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.dataset.target;
+                    if (target === 'partners' && tariffState.partnersCount > 0) tariffState.partnersCount--;
+                    if (target === 'team' && tariffState.teamCount > 0) tariffState.teamCount--;
+                    updateTariffUI();
+                });
+            });
+
+            if (radioButtons.length > 0) {
+                updateTariffUI();
+            }
         });
 
         // Функции для меню
@@ -918,6 +1899,223 @@
                 }
             }
         });
+
+        // Radar SVG renderer (темный UI-стиль)
+        function renderRadar(el, cfg) {
+            const labels = cfg.labels || [];
+            const maxVal = cfg.max || 10;
+            const size = cfg.size || 360;
+            const padding = cfg.padding || 42;
+            const rings = cfg.rings || 5;
+
+            const cx = size / 2;
+            const cy = size / 2;
+            const R = (size / 2) - padding;
+
+            const toPoint = (i, val) => {
+                const angle = (-Math.PI / 2) + (i * 2 * Math.PI / labels.length);
+                const r = (Math.max(0, Math.min(val, maxVal)) / maxVal) * R;
+                return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+            };
+
+            const polyPath = (values) => {
+                const pts = values.map((v, i) => toPoint(i, v));
+                return pts.map((p, i) => (i === 0 ? `M ${p.x.toFixed(2)} ${p.y.toFixed(2)}` : `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`)).join(" ") + " Z";
+            };
+
+            const gridColor = cfg.gridColor || "rgba(148,163,184,0.18)";
+            const axisColor = cfg.axisColor || "rgba(148,163,184,0.22)";
+            const labelColor = cfg.labelColor || "rgba(226,232,240,0.78)";
+            const tickColor = cfg.tickColor || "rgba(148,163,184,0.55)";
+            const bgGlow = cfg.bgGlow || "rgba(99,102,241,0.10)";
+
+            const series = cfg.series || [];
+
+            // Build SVG
+            const svg = [];
+            svg.push(`<svg viewBox="0 0 ${size} ${size}" width="100%" height="auto" role="img" aria-label="Радар бизнеса">`);
+
+            // Soft glow
+            svg.push(`
+                <defs>
+                    <radialGradient id="rg" cx="50%" cy="45%" r="65%">
+                        <stop offset="0%" stop-color="${bgGlow}"></stop>
+                        <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+                    </radialGradient>
+                    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                        <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.55)"></feDropShadow>
+                    </filter>
+                </defs>
+            `);
+            svg.push(`<circle cx="${cx}" cy="${cy}" r="${R + 16}" fill="url(#rg)"></circle>`);
+
+            // Rings
+            for (let k = 1; k <= rings; k++) {
+                const rr = (k / rings) * R;
+                const ringPts = labels.map((_, i) => {
+                    const angle = (-Math.PI / 2) + (i * 2 * Math.PI / labels.length);
+                    return { x: cx + rr * Math.cos(angle), y: cy + rr * Math.sin(angle) };
+                });
+                const d = ringPts.map((p, i) => (i === 0 ? `M ${p.x.toFixed(2)} ${p.y.toFixed(2)}` : `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`)).join(" ") + " Z";
+                svg.push(`<path d="${d}" fill="none" stroke="${gridColor}" stroke-width="1" />`);
+            }
+
+            // Axes
+            labels.forEach((_, i) => {
+                const p = toPoint(i, maxVal);
+                svg.push(`<line x1="${cx}" y1="${cy}" x2="${p.x.toFixed(2)}" y2="${p.y.toFixed(2)}" stroke="${axisColor}" stroke-width="1" />`);
+            });
+
+            // Ticks (0,2,4,6,8,10)
+            const ticks = cfg.ticks || [0, 2, 4, 6, 8, 10];
+            ticks.forEach((t) => {
+                const y = cy - (t / maxVal) * R;
+                svg.push(`<text x="${cx}" y="${y.toFixed(2)}" text-anchor="middle" dominant-baseline="central" fill="${tickColor}" font-size="11" font-family="JetBrains Mono, monospace">${t}</text>`);
+            });
+
+            // Labels
+            labels.forEach((label, i) => {
+                const p = toPoint(i, maxVal);
+                const dx = p.x - cx;
+                const dy = p.y - cy;
+                const norm = Math.sqrt(dx*dx + dy*dy) || 1;
+                const lx = p.x + (dx / norm) * 14;
+                const ly = p.y + (dy / norm) * 14;
+
+                let anchor = "middle";
+                if (Math.abs(dx) > 20) anchor = dx > 0 ? "start" : "end";
+
+                svg.push(`<text x="${lx.toFixed(2)}" y="${ly.toFixed(2)}" text-anchor="${anchor}" dominant-baseline="central" fill="${labelColor}" font-size="11" font-family="Inter, sans-serif">${label}</text>`);
+            });
+
+            // Series polygons
+            series.forEach((s, idx) => {
+                const d = polyPath(s.values || []);
+                const fill = s.fill || "rgba(99,102,241,0.35)";
+                const stroke = s.stroke || "rgba(99,102,241,0.85)";
+                const sw = s.strokeWidth || 2;
+                const shadow = s.shadow ? `filter="url(#softShadow)"` : "";
+
+                svg.push(`<path d="${d}" ${shadow} fill="${fill}" stroke="${stroke}" stroke-width="${sw}" />`);
+
+                // Points
+                const pts = (s.values || []).map((v, i) => toPoint(i, v));
+                pts.forEach((p) => {
+                    svg.push(`<circle cx="${p.x.toFixed(2)}" cy="${p.y.toFixed(2)}" r="2.4" fill="${stroke}" opacity="0.9" />`);
+                });
+            });
+
+            svg.push(`</svg>`);
+
+            el.innerHTML = svg.join("");
+        }
+
+        // Data (можешь заменить на реальные оценки)
+        const radarLabels = [
+            "Владелец (роль)",
+            "Команда",
+            "Управление (ритм)",
+            "Клиенты/Конкуренты",
+            "Продукт",
+            "Маркетинг",
+            "Продажи",
+            "Финансы",
+            "Стратегия"
+        ];
+
+        // До: факт + контур (контур можно трактовать как желаемую картину или потенциал)
+        const beforeFact =  [3, 6, 4, 5, 6, 2, 7, 4, 2];
+        const beforeContour = [8, 9, 8, 7, 7, 6, 7, 6, 7];
+
+        // После: целевая картина
+        const afterTarget = [10, 9, 9, 9, 9, 9, 9, 8, 9];
+
+        function mountRadars() {
+            const elBefore = document.getElementById("radar-before");
+            const elAfter = document.getElementById("radar-after");
+            if (!elBefore || !elAfter) return;
+
+            renderRadar(elBefore, {
+                labels: radarLabels,
+                max: 10,
+                size: 360,
+                padding: 54,
+                rings: 5,
+                series: [
+                    {
+                        values: beforeContour,
+                        fill: "rgba(34,211,238,0.18)",
+                        stroke: "rgba(34,211,238,0.45)",
+                        strokeWidth: 2,
+                        shadow: false
+                    },
+                    {
+                        values: beforeFact,
+                        fill: "rgba(99,102,241,0.28)",
+                        stroke: "rgba(99,102,241,0.9)",
+                        strokeWidth: 2.5,
+                        shadow: true
+                    }
+                ]
+            });
+
+            renderRadar(elAfter, {
+                labels: radarLabels,
+                max: 10,
+                size: 360,
+                padding: 54,
+                rings: 5,
+                series: [
+                    {
+                        values: afterTarget,
+                        fill: "rgba(99,102,241,0.38)",
+                        stroke: "rgba(99,102,241,0.95)",
+                        strokeWidth: 2.5,
+                        shadow: true
+                    }
+                ]
+            });
+        }
+
+        // Табы: показывать только До или только После (по желанию)
+        function mountRadarTabs() {
+            const buttons = document.querySelectorAll("[data-radar-tab]");
+            const beforeCard = document.getElementById("radar-before")?.closest(".bg-slate-900\\/50");
+            const afterCard = document.getElementById("radar-after")?.closest(".bg-slate-900\\/50");
+            if (!buttons.length || !beforeCard || !afterCard) return;
+
+            const setMode = (mode) => {
+                if (mode === "before") {
+                    beforeCard.style.display = "";
+                    afterCard.style.display = "none";
+                } else if (mode === "after") {
+                    beforeCard.style.display = "none";
+                    afterCard.style.display = "";
+                } else {
+                    beforeCard.style.display = "";
+                    afterCard.style.display = "";
+                }
+            };
+
+            // desktop: показываем оба, mobile: переключаем
+            const applyResponsive = () => {
+                const isMobile = window.matchMedia("(max-width: 767px)").matches;
+                setMode(isMobile ? "before" : "both");
+            };
+
+            buttons.forEach((b) => {
+                b.addEventListener("click", () => {
+                    const mode = b.getAttribute("data-radar-tab");
+                    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+                    if (!isMobile) return; // на десктопе оба сразу
+                    setMode(mode);
+                });
+            });
+
+            window.addEventListener("resize", applyResponsive);
+            applyResponsive();
+        }
+
     </script>
 </body>
 </html>
