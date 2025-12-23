@@ -429,14 +429,14 @@
 
     <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-14 md:h-16">
-                <div class="flex items-center gap-2 md:gap-3">
-                    <a href="#hero" class="flex items-center gap-2 md:gap-3">
-                        <img src="img/logo.png" alt="Omnium" class="h-10 md:h-16 w-auto">
-                        <div class="text-lg md:text-2xl font-mono font-bold tracking-widest text-white">OMNIUM</div>
+            <div class="flex items-center justify-between h-14 sm:h-16">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a href="#hero" class="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+                        <img src="img/logo.png" alt="Omnium" class="h-8 sm:h-10 md:h-16 w-auto">
+                        <div class="text-base sm:text-lg md:text-2xl font-mono font-bold tracking-[0.15em] sm:tracking-widest text-white">OMNIUM</div>
                     </a>
                 </div>
-                <button id="menuToggle" class="relative w-10 h-10 flex items-center justify-center focus:outline-none z-50 group" aria-label="Меню">
+                <button id="menuToggle" class="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center focus:outline-none z-50 group" aria-label="Меню">
                     <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 top-3" id="menuLine1"></span>
                     <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 top-1/2 -translate-y-1/2" id="menuLine2"></span>
                     <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 bottom-3" id="menuLine3"></span>
@@ -445,15 +445,15 @@
         </div>
         
         <!-- Выпадающее меню -->
-        <div id="mobileMenu" class="fixed top-14 md:top-16 left-0 w-full bg-slate-950/95 backdrop-blur-md border-b border-slate-800 opacity-0 invisible pointer-events-none transition-all duration-300 z-40">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <nav class="flex flex-col gap-4">
-                    <a href="#hero" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Главная</a>
-                    <a href="#for-whom" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Для кого</a>
-                    <a href="#product" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Продукт</a>
-                    <a href="#technology" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Технология</a>
-                    <a href="#tariffs" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Тарифы</a>
-                    <a href="#contact" class="text-white hover:text-accent transition py-2 font-mono text-sm md:text-base" onclick="closeMenu()">Контакты</a>
+        <div id="mobileMenu" class="fixed top-14 sm:top-16 left-0 w-full bg-slate-950/95 backdrop-blur-md border-b border-slate-800 opacity-0 invisible pointer-events-none transition-all duration-300 z-40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+                <nav class="flex flex-col gap-3 sm:gap-4">
+                    <a href="#hero" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Главная</a>
+                    <a href="#for-whom" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Для кого</a>
+                    <a href="#product" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Продукт</a>
+                    <a href="#technology" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Технология</a>
+                    <a href="#tariffs" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Тарифы</a>
+                    <a href="#contact" class="text-white hover:text-accent transition py-2 font-mono text-sm sm:text-base" onclick="closeMenu()">Контакты</a>
                 </nav>
             </div>
         </div>
@@ -507,49 +507,49 @@
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- Левая колонка: Текст -->
                 <div class="text-center lg:text-left">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-mono font-bold tracking-tight text-white mb-4 md:mb-6 leading-tight">
-                        Omnium: <span class="text-accent">Системное управление</span> <br class="hidden md:block" /> малым бизнесом
-            </h1>
-            
-                    <p class="text-lg md:text-xl lg:text-2xl text-slate-300 mb-8 md:mb-10 leading-relaxed font-medium">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-mono font-bold tracking-tight text-white mb-4 md:mb-6 leading-tight px-2">
+                        Omnium: <span class="text-accent">Системное управление</span> <br class="hidden sm:block" /> малым бизнесом
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 mb-6 sm:mb-8 md:mb-10 leading-relaxed font-medium px-2">
                         Превращаем хаос операционки в управляемую стратегию на 12 месяцев.
                     </p>
 
                     <!-- 3 ключевых буллета -->
-                    <div class="space-y-4 md:space-y-5 mb-8 md:mb-10">
-                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
-                            <div class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center group-hover:bg-accent/30 transition">
-                                <i class="fa-solid fa-rocket text-accent text-xl"></i>
+                    <div class="space-y-3 sm:space-y-4 md:space-y-5 mb-6 sm:mb-8 md:mb-10">
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-lg sm:rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg flex items-center justify-center group-hover:bg-accent/30 transition">
+                                <i class="fa-solid fa-rocket text-accent text-lg sm:text-xl"></i>
                             </div>
-                            <div class="flex-1 text-left">
-                                <div class="font-bold text-white mb-1 text-base md:text-lg">Внедрение</div>
-                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Строим управление на основе реальности вашего бизнеса.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition">
-                                <i class="fa-solid fa-brain text-blue-400 text-xl"></i>
-                            </div>
-                            <div class="flex-1 text-left">
-                                <div class="font-bold text-white mb-1 text-base md:text-lg">Точность через AI</div>
-                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Используем искусственный интеллект для анализа данных, чтобы исключить домыслы и найти скрытые точки роста.</p>
+                            <div class="flex-1 text-left min-w-0">
+                                <div class="font-bold text-white mb-1 text-sm sm:text-base md:text-lg">Не обучение, а внедрение</div>
+                                <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">Строим управление на основе реальности вашего бизнеса, а не книжных теорий.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-xl hover:border-accent/50 transition-all duration-300 group">
-                            <div class="flex-shrink-0 w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition">
-                                <i class="fa-solid fa-chart-line text-green-400 text-xl"></i>
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-lg sm:rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition">
+                                <i class="fa-solid fa-brain text-blue-400 text-lg sm:text-xl"></i>
                             </div>
-                            <div class="flex-1 text-left">
-                                <div class="font-bold text-white mb-1 text-base md:text-lg">Результат — система</div>
-                                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Вы получаете настроенный управленческий ритм, понятные цели и финансовую прозрачность.</p>
+                            <div class="flex-1 text-left min-w-0">
+                                <div class="font-bold text-white mb-1 text-sm sm:text-base md:text-lg">Точность через AI</div>
+                                <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">Используем искусственный интеллект для анализа данных, чтобы исключить домыслы и найти скрытые точки роста.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 bg-slate-900/50 border border-slate-800 rounded-lg sm:rounded-xl hover:border-accent/50 transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition">
+                                <i class="fa-solid fa-chart-line text-green-400 text-lg sm:text-xl"></i>
+                            </div>
+                            <div class="flex-1 text-left min-w-0">
+                                <div class="font-bold text-white mb-1 text-sm sm:text-base md:text-lg">Результат — система</div>
+                                <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">Вы получаете не просто «советы», а настроенный управленческий ритм, понятные цели и финансовую прозрачность.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-center lg:justify-start gap-4">
-                        <a href="#tariffs" class="bg-accent hover:bg-indigo-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 text-center relative overflow-hidden group">
+                    <div class="flex justify-center lg:justify-start gap-4 px-2">
+                        <a href="#tariffs" class="w-full sm:w-auto bg-accent hover:bg-indigo-500 text-white px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 text-center relative overflow-hidden group">
                             <span class="relative z-10">Выбрать формат</span>
                             <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
@@ -660,30 +660,30 @@
             </div>
             
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <div class="p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group card-hover">
+                <div class="p-4 sm:p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group card-hover">
                     <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
                     <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10 group-hover:scale-110 transition duration-300"><i class="fa-solid fa-fire-extinguisher"></i></div>
                     <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Операционная рутина</h3>
-                    <p class="text-xs md:text-sm text-slate-400 relative z-10">Постоянные операционные вопросы съедают все время.</p>
+                    <p class="text-xs md:text-sm text-slate-400 relative z-10 leading-relaxed">Постоянные операционные вопросы съедают все время.</p>
                 </div>
-                <div class="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="text-red-400 text-2xl mb-4 relative z-10"><i class="fa-solid fa-eye-slash"></i></div>
-                    <h3 class="text-white font-bold mb-2 relative z-10">Слепая зона</h3>
-                    <p class="text-sm text-slate-400 relative z-10">Решения в ручном режиме, нет ясной картины происходящего.</p>
+                <div class="p-4 sm:p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
+                    <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10"><i class="fa-solid fa-eye-slash"></i></div>
+                    <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Слепая зона</h3>
+                    <p class="text-xs md:text-sm text-slate-400 relative z-10 leading-relaxed">Решения в ручном режиме, нет ясной картины происходящего.</p>
                 </div>
-                <div class="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="text-red-400 text-2xl mb-4 relative z-10"><i class="fa-solid fa-rotate-right"></i></div>
-                    <h3 class="text-white font-bold mb-2 relative z-10">Замкнутый круг</h3>
-                    <p class="text-sm text-slate-400 relative z-10">Попытки внедрить изменения разбиваются о текучку.</p>
+                <div class="p-4 sm:p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
+                    <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10"><i class="fa-solid fa-rotate-right"></i></div>
+                    <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Замкнутый круг</h3>
+                    <p class="text-xs md:text-sm text-slate-400 relative z-10 leading-relaxed">Попытки внедрить изменения разбиваются о текучку.</p>
                 </div>
-                <div class="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="text-red-400 text-2xl mb-4 relative z-10"><i class="fa-solid fa-mountain"></i></div>
-                    <h3 class="text-white font-bold mb-2 relative z-10">Плато</h3>
-                    <p class="text-sm text-slate-400 relative z-10">Бизнес растет слабо или деградирует. Масштабирование невозможно.</p>
+                <div class="p-4 sm:p-5 md:p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition"></div>
+                    <div class="text-red-400 text-xl md:text-2xl mb-3 md:mb-4 relative z-10"><i class="fa-solid fa-mountain"></i></div>
+                    <h3 class="text-white font-bold mb-2 relative z-10 text-sm md:text-base">Плато</h3>
+                    <p class="text-xs md:text-sm text-slate-400 relative z-10 leading-relaxed">Бизнес растет слабо или деградирует. Масштабирование невозможно.</p>
                 </div>
             </div>
         </div>
@@ -724,30 +724,32 @@
                     </ul>
                 </div>
 
-                <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group">
-                    <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-6 group-hover:bg-accent transition">
-                        <i class="fa-solid fa-handshake"></i>
-                </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-mono">Совладельцы (Партнеры)</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                <div class="bg-slate-900/50 p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-4 md:mb-6 group-hover:bg-accent transition relative z-10">
+                        <i class="fa-solid fa-handshake text-base md:text-lg"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-mono relative z-10">Совладельцы (Партнеры)</h3>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4 relative z-10">
                         Компании, где решения принимают несколько собственников.
                     </p>
-                    <ul class="text-sm text-slate-500 space-y-2">
+                    <ul class="text-xs md:text-sm text-slate-500 space-y-2 relative z-10">
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Важно снять разногласия в видении</span></li>
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Нужен единый курс</span></li>
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Четкое разделение ответственности</span></li>
                     </ul>
                 </div>
 
-                <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group">
-                    <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-6 group-hover:bg-accent transition">
-                        <i class="fa-solid fa-users"></i>
-                </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-mono">Бизнес с командой</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                <div class="bg-slate-900/50 p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-800 hover:border-accent transition duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-lg flex items-center justify-center text-white mb-4 md:mb-6 group-hover:bg-accent transition relative z-10">
+                        <i class="fa-solid fa-users text-base md:text-lg"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-mono relative z-10">Бизнес с командой</h3>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4 relative z-10">
                         Для внедрения важно подключение ключевых сотрудников (ТОПов).
                     </p>
-                    <ul class="text-sm text-slate-500 space-y-2">
+                    <ul class="text-xs md:text-sm text-slate-500 space-y-2 relative z-10">
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Нужно «приземлить» стратегию на функции</span></li>
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Команда должна взять ответственность</span></li>
                         <li class="flex items-start gap-2"><i class="fa-solid fa-check text-slate-700 mt-1"></i><span>Синхронизация целей всех отделов</span></li>
@@ -844,25 +846,25 @@
                     </div>
                 </div>
 
-                        <div class="md:w-7/12 bg-slate-950/50 rounded-lg md:rounded-xl border border-slate-800/50 p-4 md:p-6 overflow-hidden">
+                        <div class="md:w-7/12 bg-slate-950/50 rounded-lg md:rounded-xl border border-slate-800/50 p-3 sm:p-4 md:p-6 overflow-hidden">
                             <div class="flex flex-col gap-3 md:gap-4">
-                                <div class="flex items-center justify-between gap-3">
-                                    <div class="text-xs font-mono text-slate-400">Схема №5 - Радар бизнеса - Владелец (роль)</div>
-                                    <div class="flex items-center gap-2">
+                                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
+                                    <div class="text-[10px] sm:text-xs font-mono text-slate-400">Схема №5 - Радар бизнеса - Владелец (роль)</div>
+                                    <div class="flex items-center gap-2 w-full sm:w-auto">
                                         <button
                                             type="button"
-                                            class="px-3 py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
+                                            class="flex-1 sm:flex-none px-3 py-1.5 sm:py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
                                             data-radar-tab="before"
                                         >До</button>
                                         <button
                                             type="button"
-                                            class="px-3 py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
+                                            class="flex-1 sm:flex-none px-3 py-1.5 sm:py-1 rounded-md border border-slate-700 bg-slate-900 text-slate-300 text-xs font-mono hover:border-accent hover:text-white transition"
                                             data-radar-tab="after"
                                         >После</button>
-                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
                                     <!-- До -->
                                     <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-3 md:p-4">
                                         <div class="flex items-center justify-between mb-2">
@@ -1303,33 +1305,33 @@
                     <div class="p-5 md:p-6">
                         <div class="bg-slate-950/50 border border-slate-800 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
                             <strong class="text-white text-sm md:text-base block mb-4">Выберите конфигурацию участия:</strong>
-                            <div class="radio-group flex flex-wrap gap-3 mb-4">
+                            <div class="radio-group flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 mb-4">
                                 <input type="radio" id="type-owner" name="config-type" value="owner" checked class="hidden">
-                                <label for="type-owner" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Я один (Владелец)</label>
+                                <label for="type-owner" class="flex-1 min-w-0 sm:min-w-[140px] text-center py-2.5 px-3 sm:px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-xs sm:text-sm font-medium radio-label">Я один (Владелец)</label>
                                 <input type="radio" id="type-team" name="config-type" value="team" class="hidden">
-                                <label for="type-team" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Владелец + Команда</label>
+                                <label for="type-team" class="flex-1 min-w-0 sm:min-w-[140px] text-center py-2.5 px-3 sm:px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-xs sm:text-sm font-medium radio-label">Владелец + Команда</label>
                                 <input type="radio" id="type-partners" name="config-type" value="partners" class="hidden">
-                                <label for="type-partners" class="flex-1 min-w-[140px] text-center py-2.5 px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-sm font-medium radio-label">Совладельцы (+ Команда)</label>
+                                <label for="type-partners" class="flex-1 min-w-0 sm:min-w-[140px] text-center py-2.5 px-3 sm:px-4 bg-slate-900 border-2 border-slate-700 rounded-lg cursor-pointer transition-all hover:border-accent/50 text-white text-xs sm:text-sm font-medium radio-label">Совладельцы (+ Команда)</label>
                             </div>
 
-                            <div class="js-partner-counter hidden mb-4 p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-                                <span class="text-slate-300 text-sm">Количество дополнительных партнёров:</span>
-                                <div class="flex items-center gap-4">
-                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="partners">-</button>
-                                    <span class="counter-value text-lg font-bold text-white min-w-[20px] text-center" id="cnt-partners-val">0</span>
-                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="partners">+</button>
+                            <div class="js-partner-counter hidden mb-4 p-3 sm:p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                                <span class="text-slate-300 text-xs sm:text-sm text-center sm:text-left">Количество дополнительных партнёров:</span>
+                                <div class="flex items-center gap-3 sm:gap-4">
+                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center flex-shrink-0" data-target="partners">-</button>
+                                    <span class="counter-value text-base sm:text-lg font-bold text-white min-w-[20px] text-center" id="cnt-partners-val">0</span>
+                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center flex-shrink-0" data-target="partners">+</button>
                                 </div>
-                                <small class="text-slate-500 text-xs">(макс. 3, по 89к)</small>
+                                <small class="text-slate-500 text-xs text-center sm:text-left">(макс. 3, по 89к)</small>
                             </div>
 
-                            <div class="js-team-counter hidden p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-                                <span class="text-slate-300 text-sm">Количество ключевых сотрудников:</span>
-                                <div class="flex items-center gap-4">
-                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="team">-</button>
-                                    <span class="counter-value text-lg font-bold text-white min-w-[20px] text-center" id="cnt-team-val">0</span>
-                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center" data-target="team">+</button>
+                            <div class="js-team-counter hidden p-3 sm:p-4 bg-slate-900 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                                <span class="text-slate-300 text-xs sm:text-sm text-center sm:text-left">Количество ключевых сотрудников:</span>
+                                <div class="flex items-center gap-3 sm:gap-4">
+                                    <button class="js-cnt-dec w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center flex-shrink-0" data-target="team">-</button>
+                                    <span class="counter-value text-base sm:text-lg font-bold text-white min-w-[20px] text-center" id="cnt-team-val">0</span>
+                                    <button class="js-cnt-inc w-8 h-8 rounded-full border border-slate-700 bg-slate-800 text-white hover:bg-slate-700 transition flex items-center justify-center flex-shrink-0" data-target="team">+</button>
                                 </div>
-                                <small class="text-slate-500 text-xs">(макс. 5, по 39к)</small>
+                                <small class="text-slate-500 text-xs text-center sm:text-left">(макс. 5, по 39к)</small>
                             </div>
                         </div>
                         
@@ -1392,11 +1394,11 @@
                     <div class="om-card-full-details hidden">
                         <div class="p-6 md:p-8 bg-slate-950/50 border-t border-slate-800 space-y-6">
                             <div>
-                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Если есть напряжение между партнерами, разные ожидания или бизнес буксует из-за "лебедя, рака и щуки". Мы переводим отношения в понятный протокол и договор.</p>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Если есть напряжение между партнерами, разные ожидания или бизнес буксует. Мы переводим отношения в понятный протокол и договор.</p>
                             </div>
                             <div>
                                 <h5 class="text-lg font-bold text-white mb-3">Какие боли решает:</h5>
-                                <p class="text-slate-300 text-sm md:text-base leading-relaxed">«Каждый тянет в свою сторону», скрытые конфликты, непроговоренные обиды по вкладу и деньгам, страх обсуждать сложные вопросы (выход, доли).</p>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed">Скрытые конфликты, непроговоренные обиды по вкладу и деньгам, страх обсуждать сложные вопросы (выход, доли).</p>
                             </div>
                             <div>
                                 <h5 class="text-lg font-bold text-white mb-3">Что делаем:</h5>
@@ -1407,10 +1409,10 @@
                                 </ul>
                             </div>
                             <div>
-                                <h5 class="text-lg font-bold text-white mb-3">Результат (Артефакты):</h5>
+                                <h5 class="text-lg font-bold text-white mb-3">Результат (Инструменты):</h5>
                                 <ul class="space-y-2 text-slate-300 text-sm md:text-base">
                                     <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Протокол решений:</strong> Зафиксированные договоренности по всем спорным зонам.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Партнёрский договор:</strong> Понятный, прикладной юридический документ на базе протокола.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span><strong>Партнёрский договор:</strong> Понятный, прикладной документ на базе протокола.</span></li>
                                 </ul>
                             </div>
                             <button onclick="openTariffModal('Партнерская сессия', '89000')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-300 text-sm md:text-base">Выбрать партнёрскую сессию</button>
@@ -1471,7 +1473,7 @@
                                 <ul class="space-y-2 text-slate-300 text-sm md:text-base">
                                     <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>4 управленческие сессии в месяц (еженедельно).</span></li>
                                     <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Оперативный перевод решений в задачи с ответственными.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Быстрый съем блокеров и "тупняков" команды.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Быстрый съём блокеров команды.</span></li>
                                     <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Еженедельная корректировка курса по факту реальности.</span></li>
                                     <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span><span>Работа в режиме "нейро-партнёра" (специалист + AI).</span></li>
                                 </ul>
@@ -1487,12 +1489,12 @@
         </div>
     </section>
 
-    <section class="py-20 max-w-4xl mx-auto px-4 fade-up">
-        <div class="flex items-start gap-4 p-6 bg-slate-900 rounded-lg border border-slate-800">
-            <div class="text-green-500 text-2xl mt-1"><i class="fa-solid fa-lock"></i></div>
-            <div>
-                <h3 class="text-lg font-bold text-white mb-2">Безопасность и конфиденциальность</h3>
-                <ul class="text-sm text-slate-400 space-y-2 list-disc list-inside">
+    <section class="py-12 sm:py-16 md:py-20 max-w-4xl mx-auto px-4 fade-up">
+        <div class="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 md:p-6 bg-slate-900 rounded-lg border border-slate-800">
+            <div class="text-green-500 text-xl sm:text-2xl mt-1 flex-shrink-0"><i class="fa-solid fa-lock"></i></div>
+            <div class="min-w-0">
+                <h3 class="text-base sm:text-lg font-bold text-white mb-2">Безопасность и конфиденциальность</h3>
+                <ul class="text-xs sm:text-sm text-slate-400 space-y-2 list-disc list-inside">
                     <li>Подписываем NDA перед стартом.</li>
                     <li>Используем данные только для управленческих выводов.</li>
                     <li>Не передаем третьим лицам и не обучаем на данных публичные модели.</li>
@@ -1514,11 +1516,11 @@
                 
                 <div class="lg:w-1/2 mb-8 md:mb-10 lg:mb-0">
                     <span class="text-accent font-mono text-xs md:text-sm tracking-widest uppercase mb-2 block">Контакты</span>
-                    <h2 class="text-2xl md:text-3xl lg:text-5xl font-mono font-bold text-white mb-4 md:mb-6">
-                        Готовы навести <br class="hidden md:block">порядок?
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white mb-4 md:mb-6">
+                        Готовы навести <br class="hidden sm:block">порядок?
                     </h2>
-                    <p class="text-slate-400 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-                        Оставьте заявку на короткий разбор (Zoom, 15–20 минут). Мы не будем «продавать», а просто зададим несколько вопросов, чтобы понять: сможем ли мы помочь в вашей ситуации или нет.
+                    <p class="text-slate-400 text-sm sm:text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
+                        Оставьте заявку на короткий разбор (Zoom, 15–20 минут). Мы не будем продавать, а просто зададим несколько вопросов, чтобы понять: сможем ли мы помочь в вашей ситуации.
                     </p>
                     
                     <div class="space-y-3 md:space-y-4">
@@ -1590,19 +1592,19 @@
         </div>
     </section>
 
-    <footer class="bg-slate-950 border-t border-slate-800 py-8 md:py-12">
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 sm:py-8 md:py-12">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
-                <img src="img/logo.png" alt="Omnium" class="h-12 md:h-16 w-auto">
-                <div class="text-2xl md:text-3xl font-mono font-bold tracking-widest text-white">OMNIUM</div>
+            <div class="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <img src="img/logo.png" alt="Omnium" class="h-10 sm:h-12 md:h-16 w-auto">
+                <div class="text-xl sm:text-2xl md:text-3xl font-mono font-bold tracking-[0.15em] sm:tracking-widest text-white">OMNIUM</div>
             </div>
-            <p class="text-slate-500 text-xs md:text-sm mb-4 md:mb-6">Системное управление малым бизнесом.</p>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-slate-400">
+            <p class="text-slate-500 text-xs sm:text-sm mb-4 sm:mb-6 px-2">Системное управление малым бизнесом.</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-slate-400 px-2">
                 <a href="#contact" class="hover:text-white transition">Контакты</a>
                 <a href="#" class="hover:text-white transition">Реквизиты</a>
                 <a href="#" class="hover:text-white transition">Политика конфиденциальности</a>
             </div>
-            <div class="mt-6 md:mt-8 text-xs text-slate-600">
+            <div class="mt-4 sm:mt-6 md:mt-8 text-xs text-slate-600">
                 © 2024 Omnium. All rights reserved.
             </div>
         </div>
@@ -2035,11 +2037,14 @@
             const elAfter = document.getElementById("radar-after");
             if (!elBefore || !elAfter) return;
 
+            const isMobile = window.innerWidth < 768;
+            const radarSize = isMobile ? 280 : 360;
+            
             renderRadar(elBefore, {
                 labels: radarLabels,
                 max: 10,
-                size: 360,
-                padding: 54,
+                size: radarSize,
+                padding: isMobile ? 40 : 54,
                 rings: 5,
                 series: [
                     {
@@ -2062,8 +2067,8 @@
             renderRadar(elAfter, {
                 labels: radarLabels,
                 max: 10,
-                size: 360,
-                padding: 54,
+                size: radarSize,
+                padding: isMobile ? 40 : 54,
                 rings: 5,
                 series: [
                     {
@@ -2101,6 +2106,10 @@
             const applyResponsive = () => {
                 const isMobile = window.matchMedia("(max-width: 767px)").matches;
                 setMode(isMobile ? "before" : "both");
+                // Перерисовываем радары при изменении размера окна
+                if (document.getElementById("radar-before") && document.getElementById("radar-after")) {
+                    mountRadars();
+                }
             };
 
             buttons.forEach((b) => {
