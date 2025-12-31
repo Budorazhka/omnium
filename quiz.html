@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Омниквиз | Omnium</title>
+    
+    <!-- Подключение Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение шрифтов: Inter (основной) и JetBrains Mono (моноширинный) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключение Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Конфигурация Tailwind CSS: кастомные цвета и шрифты -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        accent: '#6366f1', // Indigo
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Кастомные стили скроллбара */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Анимация появления */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Кастомный дизайн radio button */
+        .custom-radio {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .custom-radio input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .custom-radio-checkmark {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border: 2px solid #475569;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-radio input[type="radio"]:checked ~ .custom-radio-checkmark {
+            border-color: #6366f1;
+            background-color: #6366f1;
+        }
+        
+        .custom-radio-checkmark::after {
+            content: "";
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .custom-radio input[type="radio"]:checked ~ .custom-radio-checkmark::after {
+            display: block;
+            animation: checkmarkPop 0.2s ease;
+        }
+        
+        @keyframes checkmarkPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .custom-radio:hover .custom-radio-checkmark {
+            border-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Шапка с кнопкой "На главную" -->
+    <header class="border-b border-slate-800 py-4 sticky top-0 bg-slate-950/95 backdrop-blur-sm z-10">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-slate-400 hover:text-accent transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="text-sm md:text-base">На главную</span>
+            </a>
+            <h1 class="text-lg md:text-xl font-mono font-bold text-white">Омниквиз</h1>
+            <div class="w-24 md:w-28"></div> <!-- Для центрирования -->
+        </div>
+    </header>
+
+    <!-- Основной контент теста -->
+    <main class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+        <!-- Прогресс-бар -->
+        <div class="mb-8 fade-in">
+            <div class="flex justify-between text-sm text-slate-500 mb-2">
+                <span>Вопрос <span id="currentQuestionNum">1</span> из 10</span>
+                <span id="quizProgress">10%</span>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-3">
+                <div id="quizProgressBar" class="bg-accent h-3 rounded-full transition-all duration-300" style="width: 10%"></div>
+            </div>
+        </div>
+
+        <!-- Контейнер для вопросов -->
+        <div id="quizContainer" class="bg-slate-900 rounded-xl border border-slate-700 p-6 md:p-8 mb-8 fade-in min-h-[400px]">
+            <!-- Вопросы будут вставлены через JavaScript -->
+        </div>
+
+        <!-- Навигация -->
+        <div class="flex justify-between gap-4 fade-in">
+            <button id="quizPrevBtn" onclick="quizPreviousQuestion()" class="px-6 py-3 border border-slate-600 text-white rounded-lg hover:bg-slate-800 transition hidden">
+                <i class="fa-solid fa-arrow-left mr-2"></i>Назад
+            </button>
+            <div class="ml-auto flex gap-4">
+                <button id="quizNextBtn" onclick="quizNextQuestion()" class="px-6 py-3 bg-accent hover:bg-indigo-500 text-white rounded-lg transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed">
+                    Далее<i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+                <button id="quizSubmitBtn" onclick="quizSubmit()" class="px-6 py-3 bg-accent hover:bg-indigo-500 text-white rounded-lg transition font-semibold hidden disabled:opacity-50 disabled:cursor-not-allowed">
+                    Завершить
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript для теста -->
+    <script>
+        // ОМНИКВИЗ (ТЕСТ ИЗ 10 ВОПРОСОВ)
+        // ========================================
+        
+        let quizAnswers = {};
+        let currentQuizQuestion = 0;
+
+        const quizQuestions = [
+            {
+                question: "Ваша роль в бизнесе",
+                options: [
+                    "Владелец",
+                    "Совладелец",
+                    "Управляю как наемный руководитель"
+                ]
+            },
+            {
+                question: "Сколько сотрудников в компании сейчас",
+                options: [
+                    "1-5",
+                    "6-15",
+                    "16-50",
+                    "51+"
+                ]
+            },
+            {
+                question: "Что лучше всего описывает текущий режим управления",
+                options: [
+                    "Все держится на мне, много ручного управления и \"пожаров\"",
+                    "Есть команда, но управление нестабильное и \"плывет\"",
+                    "Управление в целом выстроено, хотим усилить рост",
+                    "Сложно сказать"
+                ]
+            },
+            {
+                question: "Самая болезненная зона прямо сейчас",
+                options: [
+                    "Продажи",
+                    "Привлечение клиентов (маркетинг)",
+                    "Команда и люди",
+                    "Финансы (касса, прибыль, учет)",
+                    "Процессы и ответственность (бардак, нет ритма)",
+                    "Стратегия и приоритеты (неясно, куда идти)"
+                ]
+            },
+            {
+                question: "Насколько у вас есть прозрачность по цифрам",
+                options: [
+                    "Есть управленческий учет и регулярная отчетность",
+                    "Частично, что-то есть, но разрозненно",
+                    "Почти нет, в основном \"по ощущениям\"",
+                    "Вообще нет"
+                ]
+            },
+            {
+                question: "Есть ли CRM или система фиксации продаж и клиентов",
+                options: [
+                    "Да, CRM работает регулярно",
+                    "Есть, но пользуются частично",
+                    "Нет CRM",
+                    "Не знаю"
+                ]
+            },
+            {
+                question: "Готовность к формату Omnium: интервью и материалы",
+                options: [
+                    "Готов(а) к Zoom-интервью под запись и предоставлению цифровых материалов (таблицы, выгрузки, документы)",
+                    "Готов(а) к интервью, но материалы собрать сложно",
+                    "Пока не готов(а)"
+                ]
+            },
+            {
+                question: "Честность и полнота картины",
+                options: [
+                    "Готов(а) давать правдивую картину бизнеса",
+                    "Готов(а), но есть зоны, которые сложно раскрывать",
+                    "Не готов(а) обсуждать детали"
+                ]
+            },
+            {
+                question: "Что для вас результат на горизонте 12 месяцев",
+                options: [
+                    "Рост прибыли/денежного потока до целевого уровня",
+                    "Прозрачность и системность управления",
+                    "Снижение зависимости бизнеса от владельца",
+                    "Все вместе"
+                ]
+            },
+            {
+                question: "Срочность запроса",
+                options: [
+                    "Нужны изменения в ближайшие 1-2 месяца",
+                    "В ближайшие 3-6 месяцев",
+                    "Планово на горизонте года",
+                    "У нас сейчас режим экстренного спасения (антикризис)"
+                ]
+            }
+        ];
+
+        /**
+         * Отрисовывает текущий вопрос квиза
+         */
+        function renderQuizQuestion() {
+            const container = document.getElementById('quizContainer');
+            const question = quizQuestions[currentQuizQuestion];
+            const currentAnswer = quizAnswers[currentQuizQuestion] !== undefined ? quizAnswers[currentQuizQuestion] : null;
+
+            container.innerHTML = `
+                <div class="mb-4">
+                    <h4 class="text-xl md:text-2xl font-semibold text-white mb-6">${question.question}</h4>
+                    <div class="space-y-3">
+                        ${question.options.map((option, index) => `
+                            <label class="flex items-start gap-4 p-4 md:p-5 bg-slate-800 rounded-lg border-2 cursor-pointer transition-all hover:border-accent hover:bg-slate-750 ${currentAnswer === index ? 'border-accent bg-slate-750' : 'border-slate-700'}">
+                                <div class="custom-radio mt-0.5">
+                                    <input type="radio" name="quizAnswer" value="${index}" ${currentAnswer === index ? 'checked' : ''} onchange="quizSelectAnswer(${index})">
+                                    <span class="custom-radio-checkmark"></span>
+                                </div>
+                                <span class="text-slate-300 flex-1 text-base md:text-lg leading-relaxed">${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Обновление прогресс-бара
+            const progress = ((currentQuizQuestion + 1) / quizQuestions.length) * 100;
+            document.getElementById('quizProgressBar').style.width = progress + '%';
+            document.getElementById('quizProgress').textContent = Math.round(progress) + '%';
+            document.getElementById('currentQuestionNum').textContent = currentQuizQuestion + 1;
+        }
+
+        /**
+         * Выбор ответа на вопрос
+         */
+        function quizSelectAnswer(answerIndex) {
+            quizAnswers[currentQuizQuestion] = answerIndex;
+            
+            // Сохранение прогресса в localStorage
+            localStorage.setItem('quizProgress', JSON.stringify({
+                currentQuestion: currentQuizQuestion,
+                answers: quizAnswers
+            }));
+            
+            updateQuizNavigation();
+        }
+
+        /**
+         * Переход к следующему вопросу
+         */
+        function quizNextQuestion() {
+            if (quizAnswers[currentQuizQuestion] === undefined) {
+                return; // Нужно выбрать ответ
+            }
+
+            if (currentQuizQuestion < quizQuestions.length - 1) {
+                currentQuizQuestion++;
+                renderQuizQuestion();
+                updateQuizNavigation();
+                
+                // Сохранение прогресса
+                localStorage.setItem('quizProgress', JSON.stringify({
+                    currentQuestion: currentQuizQuestion,
+                    answers: quizAnswers
+                }));
+            } else {
+                quizSubmit();
+            }
+        }
+
+        /**
+         * Переход к предыдущему вопросу
+         */
+        function quizPreviousQuestion() {
+            if (currentQuizQuestion > 0) {
+                currentQuizQuestion--;
+                renderQuizQuestion();
+                updateQuizNavigation();
+            }
+        }
+
+        /**
+         * Обновление навигации квиза
+         */
+        function updateQuizNavigation() {
+            const prevBtn = document.getElementById('quizPrevBtn');
+            const nextBtn = document.getElementById('quizNextBtn');
+            const submitBtn = document.getElementById('quizSubmitBtn');
+            const hasAnswer = quizAnswers[currentQuizQuestion] !== undefined;
+            const isLastQuestion = currentQuizQuestion === quizQuestions.length - 1;
+
+            // Кнопка "Назад"
+            if (currentQuizQuestion > 0) {
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+
+            // Кнопки "Далее" / "Завершить"
+            if (isLastQuestion) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                submitBtn.disabled = !hasAnswer;
+                if (hasAnswer) {
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                } else {
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+                nextBtn.disabled = !hasAnswer;
+                if (hasAnswer) {
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                } else {
+                    nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            }
+        }
+
+        /**
+         * Отправка результатов квиза
+         */
+        function quizSubmit() {
+            if (quizAnswers[currentQuizQuestion] === undefined) {
+                return; // Нужно выбрать ответ на последний вопрос
+            }
+
+            // Показ финального сообщения
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-check text-accent text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold text-white mb-4">Спасибо за прохождение теста!</h4>
+                    <p class="text-slate-400 text-base md:text-lg mb-6">
+                        Наш менеджер свяжется с вами после анализа ваших ответов.
+                    </p>
+                    <div class="bg-slate-800 rounded-lg p-4 md:p-6 mb-6 max-w-md mx-auto">
+                        <p class="text-sm text-slate-500 mb-3">Для связи укажите ваши контакты:</p>
+                        <div class="space-y-3">
+                            <input type="text" id="quizName" placeholder="Ваше имя" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-accent">
+                            <input type="text" id="quizContact" placeholder="Телефон или Telegram" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-accent">
+                        </div>
+                    </div>
+                    <button onclick="quizSendResults()" class="w-full max-w-md mx-auto bg-accent hover:bg-indigo-500 text-white font-bold py-3 rounded-lg transition">
+                        Отправить результаты
+                    </button>
+                </div>
+            `;
+
+            // Скрытие навигации
+            document.getElementById('quizPrevBtn').classList.add('hidden');
+            document.getElementById('quizNextBtn').classList.add('hidden');
+            document.getElementById('quizSubmitBtn').classList.add('hidden');
+        }
+
+        /**
+         * Отправка результатов квиза (можно интегрировать с бэкендом)
+         */
+        function quizSendResults() {
+            const name = document.getElementById('quizName').value.trim();
+            const contact = document.getElementById('quizContact').value.trim();
+
+            if (!name || !contact) {
+                alert('Пожалуйста, укажите имя и контакт');
+                return;
+            }
+
+            // Здесь можно отправить данные на сервер
+            // const data = {
+            //     name: name,
+            //     contact: contact,
+            //     answers: quizAnswers,
+            //     questions: quizQuestions
+            // };
+            // fetch('/api/quiz', { method: 'POST', body: JSON.stringify(data) });
+
+            // Очистка сохраненного прогресса
+            localStorage.removeItem('quizProgress');
+
+            // Показ финального сообщения
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-check text-green-500 text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold text-white mb-4">Результаты отправлены!</h4>
+                    <p class="text-slate-400 text-base md:text-lg mb-6">
+                        Наш менеджер свяжется с вами в ближайшее время после анализа ваших ответов.
+                    </p>
+                    <a href="index.html" class="inline-block px-6 py-3 bg-accent hover:bg-indigo-500 text-white font-bold rounded-lg transition">
+                        Вернуться на главную
+                    </a>
+                </div>
+            `;
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            // Восстановление прогресса из localStorage (если есть)
+            const savedProgress = localStorage.getItem('quizProgress');
+            if (savedProgress) {
+                try {
+                    const data = JSON.parse(savedProgress);
+                    currentQuizQuestion = data.currentQuestion || 0;
+                    quizAnswers = data.answers || {};
+                } catch (e) {
+                    console.error('Ошибка при восстановлении прогресса:', e);
+                }
+            }
+            
+            // Инициализация первого вопроса
+            renderQuizQuestion();
+            updateQuizNavigation();
+        });
+    </script>
+</body>
+</html>
